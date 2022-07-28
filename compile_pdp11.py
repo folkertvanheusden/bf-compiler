@@ -154,7 +154,7 @@ class CompileToPDP11(CompileToMSX):
 
         self.translate(0, len(self.allCode))
 
-        print(f'{ind}JMP  start')
+        print(f'{ind}HALT')
 
         print('prtchr:')
         print('; Get character to print')
