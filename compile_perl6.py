@@ -10,38 +10,38 @@ import sys
 from compile_perl import CompileToPerl
 
 class CompileToPerl6(CompileToPerl):
-	def header(self):
-		print('Brainfuck to Perl6 compiler.', file=sys.stderr)
+    def header(self):
+        print('Brainfuck to Perl6 compiler.', file=sys.stderr)
 
-	def addToData(self, n, dot):
-		ind = self.genindent(self.lindentlevel)
+    def addToData(self, n, dot):
+        ind = self.genindent(self.lindentlevel)
 
-		if n == 1:
-			print('%s++@data_mem[$data_ptr];' % ind)
-		else:
-			print('%s@data_mem[$data_ptr] += %d;' % (ind, n))
+        if n == 1:
+            print('%s++@data_mem[$data_ptr];' % ind)
+        else:
+            print('%s@data_mem[$data_ptr] += %d;' % (ind, n))
 
-	def subFromData(self, n, dot):
-		ind = self.genindent(self.lindentlevel)
+    def subFromData(self, n, dot):
+        ind = self.genindent(self.lindentlevel)
 
-		if n == 1:
-			print('%s--@data_mem[$data_ptr];' % ind)
-		else:
-			print('%s@data_mem[$data_ptr] -= %d;' % (ind, n))
+        if n == 1:
+            print('%s--@data_mem[$data_ptr];' % ind)
+        else:
+            print('%s@data_mem[$data_ptr] -= %d;' % (ind, n))
 
-	def emitCharacter(self, n, dot):
-		for i in range(0, n):
-			print('%sprint chr(@data_mem[$data_ptr]);' % self.genindent(self.lindentlevel))
+    def emitCharacter(self, n, dot):
+        for i in range(0, n):
+            print('%sprint chr(@data_mem[$data_ptr]);' % self.genindent(self.lindentlevel))
 
-	def startLoop(self, n):
-		for j in range(0, n):
-			print('%swhile @data_mem[$data_ptr] {' % self.genindent(self.lindentlevel))
-			self.lindentlevel += 1
+    def startLoop(self, n):
+        for j in range(0, n):
+            print('%swhile @data_mem[$data_ptr] {' % self.genindent(self.lindentlevel))
+            self.lindentlevel += 1
 
-	def emitProgramBootstrap(self):
-		for i in self.copyrightNotice:
-			print('# %s' % i)
-		print('')
+    def emitProgramBootstrap(self):
+        for i in self.copyrightNotice:
+            print('# %s' % i)
+        print('')
 
-		print('my int32 $data_ptr = 0;')
-		print('my uint8 @data_mem;');
+        print('my int32 $data_ptr = 0;')
+        print('my uint8 @data_mem;');

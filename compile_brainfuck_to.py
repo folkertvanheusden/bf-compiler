@@ -1,4 +1,4 @@
-#! /usr/bin/python
+#! /usr/bin/python3
 
 # Written by Folkert van Heusden
 # Released in the public domain
@@ -33,120 +33,120 @@ from compile_sdlbasic import CompileToSDLBasic
 from compile_x86 import CompileToX86
 
 if len(sys.argv) != 2:
-	print('Usage: %s target' % sys.argv[0])
-	print('')
-	print('Target being:')
-	print('\tAda')
-	print('\tArduino')
-	print('\tArduinoESP')
-	print('\tARM')
-	print('\tBash')
-	print('\tCOBOL')
-	print('\tC')
-	print('\tC64')
-	print('\tC#')
-	print('\tGo')
-	print('\tHLASM')
-	print('\tJava')
-	print('\tJavascript')
-	print('\tLua')
-	print('\tMSX (z80 assembly code)')
-	print('\tPascal')
-	print('\tPerl')
-	print('\tPerl6')
-	print('\tPHP')
-	print('\tPL/1')
-	print('\tPython')
-	print('\tRuby')
-	print('\tRust')
-	print('\tScala')
-	print('\tSDLBasic')
-	print('\tx86 (assembly, at&t notation)')
-	sys.exit(1)
+    print('Usage: %s target' % sys.argv[0])
+    print('')
+    print('Target being:')
+    print('\tAda')
+    print('\tArduino')
+    print('\tArduinoESP')
+    print('\tARM')
+    print('\tBash')
+    print('\tCOBOL')
+    print('\tC')
+    print('\tC64')
+    print('\tC#')
+    print('\tGo')
+    print('\tHLASM')
+    print('\tJava')
+    print('\tJavascript')
+    print('\tLua')
+    print('\tMSX (z80 assembly code)')
+    print('\tPascal')
+    print('\tPerl')
+    print('\tPerl6')
+    print('\tPHP')
+    print('\tPL/1')
+    print('\tPython')
+    print('\tRuby')
+    print('\tRust')
+    print('\tScala')
+    print('\tSDLBasic')
+    print('\tx86 (assembly, at&t notation)')
+    sys.exit(1)
 
 which = sys.argv[1].lower()
 
 obj = None
 if which == 'ada':
-	obj = CompileToAda()
+    obj = CompileToAda()
 
 elif which == 'arduino':
-	obj = CompileToArduino()
+    obj = CompileToArduino()
 
 elif which == 'arduinoesp':
-	obj = CompileToArduinoESP()
+    obj = CompileToArduinoESP()
 
 elif which == 'arm':
-	obj = CompileToARM()
+    obj = CompileToARM()
 
 elif which == 'bash':
-	obj = CompileToBash()
+    obj = CompileToBash()
 
 elif which == 'cobol':
-	obj = CompileToCOBOL()
+    obj = CompileToCOBOL()
 
 elif which == 'c':
-	obj = CompileToC()
+    obj = CompileToC()
 
 elif which == 'c64':
-	obj = CompileToC64()
+    obj = CompileToC64()
 
 elif which == 'c#':
-	obj = CompileToCSharp()
+    obj = CompileToCSharp()
 
 elif which == 'go':
-	obj = CompileToGo()
+    obj = CompileToGo()
 
 elif which == 'hlasm':
        obj = CompileToHLASM()
 
 elif which == 'java':
-	obj = CompileToJava()
+    obj = CompileToJava()
 
 elif which == 'javascript':
-	obj = CompileToJavascript()
+    obj = CompileToJavascript()
 
 elif which == 'lua':
-	obj = CompileToLua()
+    obj = CompileToLua()
 
 elif which == 'msx':
-	obj = CompileToMSX()
+    obj = CompileToMSX()
 
 elif which == 'pascal':
-	obj = CompileToPascal()
+    obj = CompileToPascal()
 
 elif which == 'perl':
-	obj = CompileToPerl()
+    obj = CompileToPerl()
 
 elif which == 'perl6':
-	obj = CompileToPerl6()
+    obj = CompileToPerl6()
 
 elif which == 'php':
-	obj = CompileToPHP()
+    obj = CompileToPHP()
 
 elif which == 'pl1' or which == 'pl/1':
-	obj = CompileToPL1()
+    obj = CompileToPL1()
 
 elif which == 'python':
-	obj = CompileToPython()
+    obj = CompileToPython()
 
 elif which == 'ruby':
-	obj = CompileToRuby()
+    obj = CompileToRuby()
 
 elif which == 'rust':
-	obj = CompileToRust()
+    obj = CompileToRust()
 
 elif which == 'scala':
-	obj = CompileToScala()
+    obj = CompileToScala()
 
 elif which == 'sdlbasic':
-	obj = CompileToSDLBasic()
+    obj = CompileToSDLBasic()
 
 elif which == 'x86':
-	obj = CompileToX86()
+    obj = CompileToX86()
 
 else:
-	print('Error: %s is not known' % which)
-	sys.exit(1)
+    print('Error: %s is not known' % which)
+    sys.exit(1)
 
 obj.main()
