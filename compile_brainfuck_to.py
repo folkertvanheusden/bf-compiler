@@ -21,6 +21,7 @@ from compile_javascript import CompileToJavascript
 from compile_lua import CompileToLua
 from compile_msx import CompileToMSX
 from compile_pascal import CompileToPascal
+from compile_pdp11 import CompileToPDP11
 from compile_perl import CompileToPerl
 from compile_perl6 import CompileToPerl6
 from compile_php import CompileToPHP
@@ -120,6 +121,9 @@ elif which == 'perl':
 
 elif which == 'perl6':
     obj = CompileToPerl6()
+
+elif which == 'pdp11':
+    obj = CompileToPDP11()
 
 elif which == 'php':
     obj = CompileToPHP()
