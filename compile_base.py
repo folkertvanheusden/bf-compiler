@@ -63,7 +63,7 @@ class CompileBase:
 
 	def readStdin(self, n):
 		msg = 'Read from keyboard not supported (%d times)' % n
-		print >>sys.stderr, msg
+		print(msg, file=sys.stderr)
 		self.addComment(msg)
 
 	def startLoop(self, n):
@@ -129,7 +129,7 @@ class CompileBase:
 			found = False
 
 			if i > start:
-				for j in xrange(0, len(self.blocks)):
+				for j in range(0, len(self.blocks)):
 					blockStart = self.blocks[j][0]
 					nChars = self.blocks[j][1] - blockStart
 
@@ -264,23 +264,23 @@ class CompileBase:
 		pass
 
 	def printStats(self):
-		print >>sys.stderr, 'count inc/dec data ptr: %d/%d' % (self.statsIncDataPtrN, self.statsDecDataPtrN)
-		print >>sys.stderr, 'value inc/dec data ptr: %d/%d' % (self.statsIncDataPtrCnt, self.statsDecDataPtrCnt)
-		print >>sys.stderr, 'count inc/dec data: %d/%d' % (self.statsIncDataN, self.statsDecDataN)
-		print >>sys.stderr, 'value inc/dec data: %d/%d' % (self.statsIncDataCnt, self.statsDecDataCnt)
-		print >>sys.stderr, 'emit char count/value: %d/%d' % (self.statsEmitCharN, self.statsEmitCharCnt)
-		print >>sys.stderr, 'get char count/value: %d/%d' % (self.statsGetCharN, self.statsGetCharCnt)
-		print >>sys.stderr, 'loops count/value: %d/%d' % (self.statsLoopN, self.statsLoopCnt)
-		print >>sys.stderr, 'comment count/value: %d/%d' % (self.statsCommentN, self.statsCommentCnt)
-		print >>sys.stderr, 'number of functions/used: %d/%d' % (len(self.blocks), self.statsBlockUsedCnt)
-		print >>sys.stderr, ''
+		print('count inc/dec data ptr: %d/%d' % (self.statsIncDataPtrN, self.statsDecDataPtrN), file=sys.stderr)
+		print('value inc/dec data ptr: %d/%d' % (self.statsIncDataPtrCnt, self.statsDecDataPtrCnt), file=sys.stderr)
+		print('count inc/dec data: %d/%d' % (self.statsIncDataN, self.statsDecDataN), file=sys.stderr)
+		print('value inc/dec data: %d/%d' % (self.statsIncDataCnt, self.statsDecDataCnt), file=sys.stderr)
+		print('emit char count/value: %d/%d' % (self.statsEmitCharN, self.statsEmitCharCnt), file=sys.stderr)
+		print('get char count/value: %d/%d' % (self.statsGetCharN, self.statsGetCharCnt), file=sys.stderr)
+		print('loops count/value: %d/%d' % (self.statsLoopN, self.statsLoopCnt), file=sys.stderr)
+		print('comment count/value: %d/%d' % (self.statsCommentN, self.statsCommentCnt), file=sys.stderr)
+		print('number of functions/used: %d/%d' % (len(self.blocks), self.statsBlockUsedCnt), file=sys.stderr)
+		print('', file=sys.stderr)
 
 	def main(self):
-		print >>sys.stderr, '(C) 2016-2018 by Folkert van Heusden <mail@vanheusden.com>'
-		print >>sys.stderr, 'Released in the public domain'
-		print >>sys.stderr, ''
-		print >>sys.stderr, 'This program reads the brainfuck source-code from stdin.'
-		print >>sys.stderr, ''
+		print('(C) 2016-2018 by Folkert van Heusden <mail@vanheusden.com>', file=sys.stderr)
+		print('Released in the public domain', file=sys.stderr)
+		print('', file=sys.stderr)
+		print('This program reads the brainfuck source-code from stdin.', file=sys.stderr)
+		print('', file=sys.stderr)
 
 		self.header()
 

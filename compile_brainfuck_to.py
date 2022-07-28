@@ -33,35 +33,35 @@ from compile_sdlbasic import CompileToSDLBasic
 from compile_x86 import CompileToX86
 
 if len(sys.argv) != 2:
-	print 'Usage: %s target' % sys.argv[0]
-	print ''
-	print 'Target being:'
-	print '\tAda'
-	print '\tArduino'
-	print '\tArduinoESP'
-	print '\tARM'
-	print '\tBash'
-	print '\tCOBOL'
-	print '\tC'
-	print '\tC64'
-	print '\tC#'
-	print '\tGo'
-	print '\tHLASM'
-	print '\tJava'
-	print '\tJavascript'
-	print '\tLua'
-	print '\tMSX (z80 assembly code)'
-	print '\tPascal'
-	print '\tPerl'
-	print '\tPerl6'
-	print '\tPHP'
-	print '\tPL/1'
-	print '\tPython'
-	print '\tRuby'
-	print '\tRust'
-	print '\tScala'
-	print '\tSDLBasic'
-	print '\tx86 (assembly, at&t notation)'
+	print('Usage: %s target' % sys.argv[0])
+	print('')
+	print('Target being:')
+	print('\tAda')
+	print('\tArduino')
+	print('\tArduinoESP')
+	print('\tARM')
+	print('\tBash')
+	print('\tCOBOL')
+	print('\tC')
+	print('\tC64')
+	print('\tC#')
+	print('\tGo')
+	print('\tHLASM')
+	print('\tJava')
+	print('\tJavascript')
+	print('\tLua')
+	print('\tMSX (z80 assembly code)')
+	print('\tPascal')
+	print('\tPerl')
+	print('\tPerl6')
+	print('\tPHP')
+	print('\tPL/1')
+	print('\tPython')
+	print('\tRuby')
+	print('\tRust')
+	print('\tScala')
+	print('\tSDLBasic')
+	print('\tx86 (assembly, at&t notation)')
 	sys.exit(1)
 
 which = sys.argv[1].lower()
@@ -146,7 +146,7 @@ elif which == 'x86':
 	obj = CompileToX86()
 
 else:
-	print 'Error: %s is not known' % which
+	print('Error: %s is not known' % which)
 	sys.exit(1)
 
 obj.main()
