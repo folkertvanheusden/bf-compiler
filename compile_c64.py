@@ -1,7 +1,7 @@
 # Written by Folkert van Heusden
-# Released under AGPL v3.0
+# Released in the public domain
 
-# This file was obtained from https://www.vanheusden.com/misc/blog/2016-05-19_brainfuck_compilers_compared.php
+# www.vanheusden.com
 
 # Written with help of http://joriszwart.nl/
 

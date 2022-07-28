@@ -1,7 +1,7 @@
 # Written by Folkert van Heusden
-# Released under AGPL v3.0
+# Released in the public domain
 
-# This file was obtained from https://www.vanheusden.com/misc/blog/2016-05-19_brainfuck_compilers_compared.php
+# www.vanheusden.com
 
 import getpass
 import sys
@@ -89,7 +89,7 @@ class CompileToCOBOL(CompileBase):
 		print '      * Brainfuck code compiled to COBOL using compiler written'
 		print '      * by Folkert van Heusden - mail@vanheusden.com'
 		print '      * www.vanheusden.com'
-		print '      * Released under AGPL v3.0 license.'
+		print '      * Released in the public domain license.'
 		tm = time.localtime()
 		print '       DATE-WRITTEN. %02d/%02d/%02d.' % (tm.tm_year % 100, tm.tm_mon, tm.tm_mday)
 		print '       '
