@@ -53,6 +53,7 @@ if len(sys.argv) != 2:
     print('\tLua')
     print('\tMSX (z80 assembly code)')
     print('\tPascal')
+    print('\tPDP11')
     print('\tPerl')
     print('\tPerl6')
     print('\tPHP')
