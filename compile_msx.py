@@ -17,7 +17,7 @@ class CompileToMSX(CompileToX86):
         print('Brainfuck to MSX-ASM compiler.', file=sys.stderr)
 
     def get_name():
-        return 'msx'
+        return ('msx', 'Z80 assembly targeting MSX')
 
     def genindent(self, level):
         return ' ' * (level * 4)

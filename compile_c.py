@@ -14,7 +14,7 @@ class CompileToC(CompileBase):
         print('Brainfuck to C compiler.', file=sys.stderr)
 
     def get_name():
-        return 'c'
+        return ('c', None)
 
     def genindent(self, level):
         return ' ' * (level * 4)

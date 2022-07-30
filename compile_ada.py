@@ -13,7 +13,7 @@ class CompileToAda(CompileBase):
         print('Brainfuck to Ada compiler.', file=sys.stderr)
 
     def get_name():
-        return 'ada'
+        return ('ada', None)
 
     def genindent(self, level):
         return ' ' * (level * 4)

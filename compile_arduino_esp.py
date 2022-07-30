@@ -12,7 +12,7 @@ class CompileToArduinoESP(CompileToArduino):
         print('Brainfuck to Arduino-for-ESP8266 compiler.', file=sys.stderr)
 
     def get_name():
-        return 'arduino-esp'
+        return ('arduino-esp', None)
 
     def emitCharacter(self, n, dot):
         ind = self.genindent(self.lindentlevel)

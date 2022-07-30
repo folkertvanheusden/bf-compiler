@@ -22,7 +22,7 @@ class CompileToHLASM(CompileToX86):
         print('Brainfuck to HLASM compiler.', file=sys.stderr)
 
     def get_name():
-        return 'hlasm'
+        return ('hlasm', 'IBM mainframe (system z/zOS) assembly')
 
     def genindent(self, level):
         return ' ' * (level * 9)

@@ -14,7 +14,7 @@ class CompileToJavascript(CompileToC):
         print('Brainfuck to Javascript compiler.', file=sys.stderr)
 
     def get_name():
-        return 'javascript'
+        return ('javascript', None)
 
     def genindent(self, level):
         return ' ' * (level * 4)

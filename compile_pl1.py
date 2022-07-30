@@ -16,7 +16,7 @@ class CompileToPL1(CompileToAda):
         print('Brainfuck to PL1 compiler.', file=sys.stderr)
 
     def get_name():
-        return 'pl1'
+        return ('pl1', 'a.k.a. PL/1, PL/I')
 
     def addToDataPtr(self, n, dot):
         print('%sdata_ptr = data_ptr + %d;' % (self.genindent(self.lindentlevel), n))

@@ -15,7 +15,7 @@ class CompileToGo(CompileBase):
         print('Brainfuck to Go compiler.', file=sys.stderr)
 
     def get_name():
-        return 'go'
+        return ('go', None)
 
     def genindent(self, level):
         return ' ' * (level * 3)

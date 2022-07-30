@@ -19,7 +19,7 @@ class CompileToC64(CompileToX86):
         print('Brainfuck to C64-ASM compiler.', file=sys.stderr)
 
     def get_name():
-        return 'c64'
+        return ('c64', '6502 assembly targeting the C64')
 
     def genindent(self, level):
         return ' ' * (level * 4)

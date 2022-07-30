@@ -12,7 +12,7 @@ class CompileToArduino(CompileToC):
         print('Brainfuck to Arduino compiler.', file=sys.stderr)
 
     def get_name():
-        return 'arduino'
+        return ('arduino', None)
 
     def genindent(self, level):
         return ' ' * (level * 4)

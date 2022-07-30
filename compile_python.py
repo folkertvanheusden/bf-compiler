@@ -17,7 +17,7 @@ class CompileToPython(CompileBase):
         return ' ' * (level * 4)
 
     def get_name():
-        return 'python'
+        return ('python', 'Python 3')
 
     def invokeFunction(self, funcNr):
         print('%sf%d()' % (self.genindent(self.lindentlevel), funcNr))

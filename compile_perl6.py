@@ -14,7 +14,7 @@ class CompileToPerl6(CompileToPerl):
         print('Brainfuck to Perl6 compiler.', file=sys.stderr)
 
     def get_name():
-        return 'perl6'
+        return ('perl6', None)
 
     def addToData(self, n, dot):
         ind = self.genindent(self.lindentlevel)

@@ -12,7 +12,7 @@ class CompileToBash(CompileBase):
         print('Brainfuck to Bash compiler.', file=sys.stderr)
 
     def get_name():
-        return 'bash'
+        return ('bash', None)
 
     def genindent(self, level):
         return ' ' * (level * 4)

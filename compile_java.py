@@ -14,7 +14,7 @@ class CompileToJava(CompileToC):
         print('Brainfuck to Java compiler.', file=sys.stderr)
 
     def get_name():
-        return 'java'
+        return ('java', None)
 
     def addToData(self, n, dot):
         ind = self.genindent(self.lindentlevel)
