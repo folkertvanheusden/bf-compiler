@@ -36,6 +36,9 @@ class CompileBase:
     def header(self):
         pass
 
+    def get_name():
+        pass
+
     def loadBFCode(self):
         self.allCode = sys.stdin.read().replace('\n', '')
         self.aclen = len(self.allCode)

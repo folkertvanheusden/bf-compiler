@@ -13,6 +13,9 @@ class CompileToRuby(CompileBase):
     def header(self):
         print('Brainfuck to Ruby compiler.', file=sys.stderr)
 
+    def get_name():
+        return ('ruby', None)
+
     def genindent(self, level):
         return ' ' * (level * 3)
 

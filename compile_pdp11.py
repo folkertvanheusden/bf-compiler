@@ -16,6 +16,9 @@ class CompileToPDP11(CompileToMSX):
     def header(self):
         print('Brainfuck to PDP-11 compiler.', file=sys.stderr)
 
+    def get_name():
+        return ('pdp-11', '"bare bones" assembly for the PDP-11 with at least 64kB RAM')
+
     def genindent(self, level):
         return ' ' * (level * 4)
 

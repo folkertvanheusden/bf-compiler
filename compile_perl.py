@@ -13,6 +13,9 @@ class CompileToPerl(CompileBase):
     def header(self):
         print('Brainfuck to Perl compiler.', file=sys.stderr)
 
+    def get_name():
+        return ('perl', None)
+
     def genindent(self, level):
         return ' ' * (level * 4)
 

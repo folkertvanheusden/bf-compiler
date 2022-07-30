@@ -15,6 +15,9 @@ class CompileToX86(CompileBase):
     def header(self):
         print('Brainfuck to x86 ASM compiler.', file=sys.stderr)
 
+    def get_name():
+        return ('x86', 'x86 assembly, AT&T syntax')
+
     def genindent(self, level):
         return ' ' * (level * 4)
 
