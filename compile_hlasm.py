@@ -21,6 +21,9 @@ class CompileToHLASM(CompileToX86):
     def header(self):
         print('Brainfuck to HLASM compiler.', file=sys.stderr)
 
+    def get_name():
+        return 'hlasm'
+
     def genindent(self, level):
         return ' ' * (level * 9)
 

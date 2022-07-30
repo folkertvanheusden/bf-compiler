@@ -13,6 +13,9 @@ class CompileToScala(CompileToC):
     def header(self):
         print('Brainfuck to Scala compiler.', file=sys.stderr)
 
+    def get_name():
+        return 'scala'
+
     def addToDataPtr(self, n, dot):
         ind = self.genindent(self.lindentlevel)
 

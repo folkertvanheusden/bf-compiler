@@ -13,6 +13,9 @@ class CompileToSDLBasic(CompileBase):
     def header(self):
         print('Brainfuck to SDL-basic compiler.', file=sys.stderr)
 
+    def get_name():
+        return 'sdl-basic'
+
     def genindent(self, level):
         return ' ' * (level * 4)
 

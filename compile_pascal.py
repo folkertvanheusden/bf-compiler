@@ -14,6 +14,9 @@ class CompileToPascal(CompileToAda):
     def header(self):
         print('Brainfuck to Pascal compiler.', file=sys.stderr)
 
+    def get_name():
+        return 'pascal'
+
     def addToData(self, n, dot):
         print('%sdata_mem[data_ptr] := data_mem[data_ptr] + %d;' % (self.genindent(self.lindentlevel), n))
 

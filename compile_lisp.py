@@ -13,6 +13,9 @@ class CompileToLisp(CompileBase):
     def header(self):
         print('Brainfuck to Lisp compiler.', file=sys.stderr)
 
+    def get_name():
+        return 'lisp'
+
     def genindent(self, level):
         return ''
 

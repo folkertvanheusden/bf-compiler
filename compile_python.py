@@ -16,6 +16,9 @@ class CompileToPython(CompileBase):
     def genindent(self, level):
         return ' ' * (level * 4)
 
+    def get_name():
+        return 'python'
+
     def invokeFunction(self, funcNr):
         print('%sf%d()' % (self.genindent(self.lindentlevel), funcNr))
 

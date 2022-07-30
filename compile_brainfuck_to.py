@@ -33,125 +33,49 @@ from compile_scala import CompileToScala
 from compile_sdlbasic import CompileToSDLBasic
 from compile_x86 import CompileToX86
 
+targets = dict()
+
+targets[CompileToAda.get_name()] = CompileToAda()
+targets[CompileToArduino.get_name()] = CompileToArduino()
+targets[CompileToArduinoESP.get_name()] = CompileToArduinoESP()
+targets[CompileToARM.get_name()] = CompileToARM()
+targets[CompileToBash.get_name()] = CompileToBash()
+targets[CompileToCOBOL.get_name()] = CompileToCOBOL()
+targets[CompileToC.get_name()] = CompileToC()
+targets[CompileToC64.get_name()] = CompileToC64()
+targets[CompileToCSharp.get_name()] = CompileToCSharp()
+targets[CompileToGo.get_name()] = CompileToGo()
+targets[CompileToHLASM.get_name()] = CompileToHLASM()
+targets[CompileToJava.get_name()] = CompileToJava()
+targets[CompileToJavascript.get_name()] = CompileToJavascript()
+targets[CompileToLua.get_name()] = CompileToLua()
+targets[CompileToMSX.get_name()] = CompileToMSX()
+targets[CompileToPascal.get_name()] = CompileToPascal()
+targets[CompileToPerl.get_name()] = CompileToPerl()
+targets[CompileToPerl6.get_name()] = CompileToPerl6()
+targets[CompileToPDP11.get_name()] = CompileToPDP11()
+targets[CompileToPHP.get_name()] = CompileToPHP()
+targets[CompileToPL1.get_name()] = CompileToPL1()
+targets[CompileToPython.get_name()] = CompileToPython()
+targets[CompileToRuby.get_name()] = CompileToRuby()
+targets[CompileToRust.get_name()] = CompileToRust()
+targets[CompileToScala.get_name()] = CompileToScala()
+targets[CompileToSDLBasic.get_name()] = CompileToSDLBasic()
+targets[CompileToX86.get_name()] = CompileToX86()
+
 if len(sys.argv) != 2:
     print('Usage: %s target' % sys.argv[0])
     print('')
     print('Target being:')
-    print('\tAda')
-    print('\tArduino')
-    print('\tArduinoESP')
-    print('\tARM')
-    print('\tBash')
-    print('\tCOBOL')
-    print('\tC')
-    print('\tC64')
-    print('\tC#')
-    print('\tGo')
-    print('\tHLASM')
-    print('\tJava')
-    print('\tJavascript')
-    print('\tLua')
-    print('\tMSX (z80 assembly code)')
-    print('\tPascal')
-    print('\tPDP11')
-    print('\tPerl')
-    print('\tPerl6')
-    print('\tPHP')
-    print('\tPL/1')
-    print('\tPython')
-    print('\tRuby')
-    print('\tRust')
-    print('\tScala')
-    print('\tSDLBasic')
-    print('\tx86 (assembly, at&t notation)')
+    for target in targets:
+        print(f'\t{target}')
     sys.exit(1)
 
 which = sys.argv[1].lower()
 
-obj = None
-if which == 'ada':
-    obj = CompileToAda()
+if not which in targets:
+    print(f'Error: {which} is not known')
 
-elif which == 'arduino':
-    obj = CompileToArduino()
-
-elif which == 'arduinoesp':
-    obj = CompileToArduinoESP()
-
-elif which == 'arm':
-    obj = CompileToARM()
-
-elif which == 'bash':
-    obj = CompileToBash()
-
-elif which == 'cobol':
-    obj = CompileToCOBOL()
-
-elif which == 'c':
-    obj = CompileToC()
-
-elif which == 'c64':
-    obj = CompileToC64()
-
-elif which == 'c#':
-    obj = CompileToCSharp()
-
-elif which == 'go':
-    obj = CompileToGo()
-
-elif which == 'hlasm':
-       obj = CompileToHLASM()
-
-elif which == 'java':
-    obj = CompileToJava()
-
-elif which == 'javascript':
-    obj = CompileToJavascript()
-
-elif which == 'lua':
-    obj = CompileToLua()
-
-elif which == 'msx':
-    obj = CompileToMSX()
-
-elif which == 'pascal':
-    obj = CompileToPascal()
-
-elif which == 'perl':
-    obj = CompileToPerl()
-
-elif which == 'perl6':
-    obj = CompileToPerl6()
-
-elif which == 'pdp11':
-    obj = CompileToPDP11()
-
-elif which == 'php':
-    obj = CompileToPHP()
-
-elif which == 'pl1' or which == 'pl/1':
-    obj = CompileToPL1()
-
-elif which == 'python':
-    obj = CompileToPython()
-
-elif which == 'ruby':
-    obj = CompileToRuby()
-
-elif which == 'rust':
-    obj = CompileToRust()
-
-elif which == 'scala':
-    obj = CompileToScala()
-
-elif which == 'sdlbasic':
-    obj = CompileToSDLBasic()
-
-elif which == 'x86':
-    obj = CompileToX86()
-
-else:
-    print('Error: %s is not known' % which)
     sys.exit(1)
 
-obj.main()
+targets[which].main()
