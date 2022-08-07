@@ -17,6 +17,9 @@ class CompileToCOBOL(CompileBase):
     def header(self):
         print('Brainfuck to COBOL compiler.', file=sys.stderr)
 
+    def get_name():
+        return ('cobol', None)
+
     def genindent(self, level):
         labelspace = ' ' * 7
 

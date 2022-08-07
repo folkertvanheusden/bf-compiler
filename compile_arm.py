@@ -13,6 +13,9 @@ class CompileToARM(CompileToX86):
     def header(self):
         print('Brainfuck to ARM ASM compiler.', file=sys.stderr)
 
+    def get_name():
+        return ('arm', 'ARM assembly, Raspberry PI target')
+
     def genindent(self, level):
         return ' ' * (level * 4)
 

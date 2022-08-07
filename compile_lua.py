@@ -13,6 +13,9 @@ class CompileToLua(CompileBase):
     def header(self):
         print('Brainfuck to Lua compiler.', file=sys.stderr)
 
+    def get_name():
+        return ('lua', None)
+
     def genindent(self, level):
         return ' ' * (level * 4)
 

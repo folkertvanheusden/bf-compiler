@@ -14,6 +14,9 @@ class CompileToRust(CompileBase):
     def header(self):
         print('Brainfuck to Rust compiler.', file=sys.stderr)
 
+    def get_name():
+        return ('rust', None)
+
     def genindent(self, level):
         return ' ' * (level * 3)
 

@@ -13,6 +13,9 @@ class CompileToCSharp(CompileToJava):
     def header(self):
         print('Brainfuck to C# compiler.', file=sys.stderr)
 
+    def get_name():
+        return ('c#', None)
+
     def addToData(self, n, dot):
         ind = self.genindent(self.lindentlevel)
 
