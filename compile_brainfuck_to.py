@@ -52,6 +52,7 @@ targets[CompileToJava.get_name()[0]] = (CompileToJava(), CompileToJava.get_name(
 targets[CompileToJavascript.get_name()[0]] = (CompileToJavascript(), CompileToJavascript.get_name()[1])
 targets[CompileToLisp.get_name()[0]] = (CompileToLisp(), CompileToLisp.get_name()[1])
 targets[CompileToLua.get_name()[0]] = (CompileToLua(), CompileToLua.get_name()[1])
+targets[CompileToMIPS.get_name()[0]] = (CompileToMIPS(), CompileToMIPS.get_name()[1])
 targets[CompileToMSX.get_name()[0]] = (CompileToMSX(), CompileToMSX.get_name()[1])
 targets[CompileToPascal.get_name()[0]] = (CompileToPascal(), CompileToPascal.get_name()[1])
 targets[CompileToPDP11.get_name()[0]] = (CompileToPDP11(), CompileToPDP11.get_name()[1])
