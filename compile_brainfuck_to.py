@@ -19,6 +19,7 @@ from compile_hlasm import CompileToHLASM
 from compile_java import CompileToJava
 from compile_javascript import CompileToJavascript
 from compile_lua import CompileToLua
+from compile_mips import CompileToMIPS
 from compile_msx import CompileToMSX
 from compile_pascal import CompileToPascal
 from compile_pdp11 import CompileToPDP11
@@ -51,6 +52,7 @@ if len(sys.argv) != 2:
     print('\tJava')
     print('\tJavascript')
     print('\tLua')
+    print('\tMIPS (Linux)')
     print('\tMSX (z80 assembly code)')
     print('\tPascal')
     print('\tPDP11')
@@ -110,6 +112,9 @@ elif which == 'javascript':
 
 elif which == 'lua':
     obj = CompileToLua()
+
+elif which == 'mips':
+    obj = CompileToMIPS()
 
 elif which == 'msx':
     obj = CompileToMSX()
