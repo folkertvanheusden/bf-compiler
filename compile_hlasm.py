@@ -83,7 +83,7 @@ class CompileToHLASM(CompileToX86):
     def startLoop(self, n):
         for j in range(0, n):
             print('* start loop')
-            loopName = 'wloop_%d' % self.loopNr
+            loopName = 'WLOOP%d' % self.loopNr
             self.loopNr += 1
             self.lnrs.append(loopName)
 
@@ -92,7 +92,7 @@ class CompileToHLASM(CompileToX86):
             self.emitLInstr(loopName, 'LLGC', 'R6,0(R7)')
             self.emitInstr('C', "R6,=F'0'")
             #self.emitInstr('BZR', 'R15')
-            self.emitInstr('BE', '%s_e' % loopName)
+            self.emitInstr('BE', '%sE' % loopName)
 
     def finishLoop(self, n, dot):
         for j in range(0, n):
@@ -101,7 +101,7 @@ class CompileToHLASM(CompileToX86):
             self.emitInstr('J', '%s' % jb_label)
             self.emitInstr('LTORG', '')
 
-            jb_label_e = jb_label + "_e" # break out of while label
+            jb_label_e = jb_label + "E" # break out of while label
             self.emitLInstr(jb_label_e, 'NOP', '')
 
     def addComment(self, s):
