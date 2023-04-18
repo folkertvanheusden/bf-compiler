@@ -27,5 +27,13 @@ c++
 g++ -Ofast -fomit-frame-pointer -march=native myprogram.cpp
 
 
+Java
+----
+javac myprogram.java
 
-(C) 2016-2022 by folkert@vanheusden.com
+This produces a "BrainfuckProgram.class"-file which can be executed by:
+
+java BrainfuckProgram
+
+
+(C) 2016-2023 by folkert@vanheusden.com

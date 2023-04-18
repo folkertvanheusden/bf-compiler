@@ -61,13 +61,13 @@ class CompileToRust(CompileBase):
         print('// %s' % s)
 
     def multilineCommentStart(self):
-        print('//*')
+        print('/*')
 
     def multilineCommentLine(self, s):
         print(' * %s' % s)
 
     def multilineCommentEnd(self):
-        print('//*')
+        print('*/')
 
     def emitProgramBootstrap(self):
         for i in self.copyrightNotice:
