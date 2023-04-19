@@ -110,11 +110,18 @@ class CompileToX86(CompileBase):
 
         for blkLoop in range(0, len(self.blocks)):
             self.addComment('function')
+
+            print('\t.type\tf%d,@function' % blkLoop)
+
             print('f%d:' % blkLoop)
+
+            print('.cfi_startproc simple')
 
             self.translate(self.blocks[blkLoop][0], self.blocks[blkLoop][1])
 
             print('%sret' % self.genindent(1))
+
+            print('.cfi_endproc')
 
         self.lindentlevel -= 1
 
@@ -128,6 +135,7 @@ class CompileToX86(CompileBase):
     def emitMainFunction(self):
         ind = self.genindent(1)
 
+        print('.list')
         print('.global    _start')
         print('')
         self.addComments(self.copyrightNotice)
