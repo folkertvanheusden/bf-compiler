@@ -19,7 +19,7 @@ compiling the result
 
 ARM / X86
 ---------
-as -o myprogram.o myprogram.asm && ld -s -o myprogram myprogram.o
+as --64 -g --gstabs+ -o myprogram.o myprogram.asm && ld -o myprogram myprogram.o
 
 
 c++
