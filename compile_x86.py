@@ -140,17 +140,19 @@ class CompileToX86(CompileBase):
         self.translate(0, len(self.allCode))
 
         print('')
-        print('%smovl $1, %%eax' % ind) # sys_exit system call
-        print('%smovl $0, %%ebx' % ind)
-        print('%sint  $0x80' % ind)
+        print(f'{ind}movq $60, %rax')
+        print(f'{ind}movq $0, %rdi')
+        print(f'{ind}syscall')
 
         ind = self.genindent(1)
         print('prtchr:')
-        print('%smovb (%%esi), %%al' % ind)
-        print('%smovb %%al, buffer' % ind)
-        print('%smovl $4, %%eax' % ind) # system call number sys_write
-        print('%smovl $1, %%ebx' % ind) # fd
-        print('%smovl $buffer, %%ecx' % ind) # pointer to text
-        print('%smovl $1, %%edx' % ind) # length of text
-        print('%sint  $0x80' % ind) # call kernel
-        print('%sret' % ind)
+        print(f'{ind}push %rsi')
+        print(f'{ind}movb (%esi), %al')
+        print(f'{ind}movb %al, buffer')
+        print(f'{ind}movq $1, %rax')
+        print(f'{ind}movq $1, %rdi')
+        print(f'{ind}movq $buffer, %rsi')
+        print(f'{ind}movq $1, %rdx')
+        print(f'{ind}syscall')
+        print(f'{ind}pop %rsi')
+        print(f'{ind}ret')
