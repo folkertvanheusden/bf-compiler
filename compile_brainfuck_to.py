@@ -67,8 +67,8 @@ targets[CompileToScala.get_name()[0]] = (CompileToScala(), CompileToScala.get_na
 targets[CompileToSDLBasic.get_name()[0]] = (CompileToSDLBasic(), CompileToSDLBasic.get_name()[1])
 targets[CompileToX86.get_name()[0]] = (CompileToX86(), CompileToX86.get_name()[1])
 
-if len(sys.argv) != 2:
-    print('Usage: %s target < file-in.bf > file-out.ext' % sys.argv[0])
+if len(sys.argv) != 3:
+    print('Usage: %s target file-in.bf > file-out.ext' % sys.argv[0])
     print('')
     print('Target being:')
     for target in targets:
@@ -89,4 +89,4 @@ if not which in targets:
 
     sys.exit(1)
 
-targets[which][0].main()
+targets[which][0].main(sys.argv[2])
