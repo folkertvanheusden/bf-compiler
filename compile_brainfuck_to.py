@@ -33,6 +33,7 @@ from compile_ruby import CompileToRuby
 from compile_rust import CompileToRust
 from compile_scala import CompileToScala
 from compile_sdlbasic import CompileToSDLBasic
+from compile_sparc import CompileToSPARC
 from compile_x86 import CompileToX86
 
 targets = dict()
@@ -65,6 +66,7 @@ targets[CompileToRuby.get_name()[0]] = (CompileToRuby(), CompileToRuby.get_name(
 targets[CompileToRust.get_name()[0]] = (CompileToRust(), CompileToRust.get_name()[1])
 targets[CompileToScala.get_name()[0]] = (CompileToScala(), CompileToScala.get_name()[1])
 targets[CompileToSDLBasic.get_name()[0]] = (CompileToSDLBasic(), CompileToSDLBasic.get_name()[1])
+targets[CompileToSPARC.get_name()[0]] = (CompileToSPARC(), CompileToSPARC.get_name()[1])
 targets[CompileToX86.get_name()[0]] = (CompileToX86(), CompileToX86.get_name()[1])
 
 if len(sys.argv) != 2:
