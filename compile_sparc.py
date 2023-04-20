@@ -79,7 +79,9 @@ class CompileToSPARC(CompileToX86):
 
         for i in range(0, n):
             self.line()
+
             print(f'{self.genindent(1)}call prtchr')
+            print(f'\tnop')
 
     def startLoop(self, n):
         self.line()
@@ -108,7 +110,7 @@ class CompileToSPARC(CompileToX86):
             self.addComment('end of while loop')
             jb_label = self.lnrs.pop(-1) # jump back label
             self.line()
-            print('%sjmp %s' % (self.genindent(1), jb_label))
+            print('%sba %s' % (self.genindent(1), jb_label))
             print('%snop' % self.genindent(1))
 
             jb_label_e = jb_label + "_e" # break out of while label
@@ -157,11 +159,13 @@ class CompileToSPARC(CompileToX86):
 
         print(f'data_mem:\t.skip\t32000')
         print(f'{ind}.section\t".text"')
-        print(f'{ind}.global\t_start')
+        print(f'{ind}.global\tmain')
+        print(f'{ind}.type\tmain,@function')
         print('')
         self.addComments(self.copyrightNotice)
         print(f'{ind}.align\t16')
-        print('_start:')
+        print('main:')
+        print(f'{ind}save\t%sp,-104,%sp')
         print(f'{ind}set\tdata_mem,%g5')
 
         self.translate(0, len(self.allCode))
