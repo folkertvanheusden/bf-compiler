@@ -25,40 +25,51 @@ class CompileToX86(CompileBase):
         self.addComment('call function')
         print('%scall f%d' % (self.genindent(1), funcNr))
 
-    def addToDataPtr(self, n, dot):
+    def emitDebug(self, ind, position):
+        print('%s.loc 1 %d %d' % (ind, position[0], position[1]))
+
+    def addToDataPtr(self, n, dot, position):
         ind = self.genindent(1)
 
         self.addComment('add to pointer')
+
+        self.emitDebug(ind, position)
 
         if n == 1:
             print('%sinc %%esi' % ind)
         else:
             print('%saddl $%d, %%esi' % (ind, n))
 
-    def subFromDataPtr(self, n, dot):
+    def subFromDataPtr(self, n, dot, position):
         ind = self.genindent(1)
 
         self.addComment('sub from pointer')
+
+        self.emitDebug(ind, position)
 
         if n == 1:
                 print('%sdec %%esi' % ind)
         else:
                 print('%ssubl $%d, %%esi' % (ind, n))
 
-    def addToData(self, n, dot):
+    def addToData(self, n, dot, position):
         ind = self.genindent(1)
 
         self.addComment('add to data')
+
+        self.emitDebug(ind, position)
 
         if n == 1:
             print('%sincb (%%esi)' % ind)
         else:
             print('%saddb $%d, (%%esi)' % (ind, n))
 
-    def subFromData(self, n, dot):
+    def subFromData(self, n, dot, position):
         ind = self.genindent(1)
 
         self.addComment('sub from data')
+
+        self.emitDebug(ind, position)
 
         if n == 1:
             print('%sdecb (%%esi)' % ind)
@@ -71,7 +82,9 @@ class CompileToX86(CompileBase):
         for i in range(0, n):
             print('%scall prtchr' % self.genindent(1))
 
-    def startLoop(self, n):
+    def startLoop(self, n, position):
+        self.emitDebug('\t', position)
+
         for j in range(0, n):
             self.addComment('start of while loop')
             loopName = 'wloop_%d' % self.loopNr
@@ -84,7 +97,9 @@ class CompileToX86(CompileBase):
             print('%sjz %s_e' % (ind, loopName))
             self.lindentlevel += 1
 
-    def finishLoop(self, n, dot):
+    def finishLoop(self, n, dot, position):
+        self.emitDebug('\t', position)
+
         for j in range(0, n):
             self.addComment('end of while loop')
             jb_label = self.lnrs.pop(-1) # jump bakc label
@@ -131,6 +146,9 @@ class CompileToX86(CompileBase):
         ind = self.genindent(1)
         print('%s.lcomm data_mem, 32000' % ind)
         print('%s.lcomm buffer, 2' % ind)
+
+    def emitProgramBootstrap(self, file):
+        print(f'.file 1 "{file}"')
 
     def emitMainFunction(self):
         ind = self.genindent(1)
