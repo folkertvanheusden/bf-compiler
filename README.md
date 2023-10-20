@@ -3,7 +3,7 @@ brainfuck to * compiler
 
 Invoke with:
 
-    python compile_brainfuck_to.py language < myprogram.bf > myprogram.ext
+    python compile_brainfuck_to.py language myprogram.bf > myprogram.ext
 
 Replace language with the target language and 'ext' by the appropriate extension.
 
