@@ -21,7 +21,7 @@ class CompileToRust(CompileBase):
         return ' ' * (level * 3)
 
     def invokeFunction(self, funcNr):
-        print('%sf%d();' % (self.genindent(self.lindentlevel), funcNr))
+        print('%s(data_ptr, data_mem) = f%d(data_ptr, data_mem);' % (self.genindent(self.lindentlevel), funcNr))
 
     def addToDataPtr(self, n, dot, position):
         ind = self.genindent(self.lindentlevel)
@@ -75,35 +75,37 @@ class CompileToRust(CompileBase):
         print('')
         print(f'// This is a translation of "{file}".')
 
-        print('static mut data_ptr: usize = 0;')
-        print('static mut data_mem: [u8; 32768] = [0; 32768];')
         print('')
 
     def emitFunctions(self):
         for blkLoop in range(0, len(self.blocks)):
-            print('%sfn f%d() {' % (self.genindent(self.lindentlevel), blkLoop))
+            print('%sfn f%d(mut data_ptr: usize, mut data_mem: Vec<u8>) -> (usize, Vec<u8>) {' % (self.genindent(self.lindentlevel), blkLoop))
 
-            self.lindentlevel += 1
-            print('%sunsafe {' % self.genindent(self.lindentlevel))
             self.lindentlevel += 1
             self.translate(self.blocks[blkLoop][0], self.blocks[blkLoop][1])
             self.lindentlevel -= 1
-            print('%s}' % self.genindent(self.lindentlevel))
-            self.lindentlevel -= 1
 
+            print('%s(data_ptr, data_mem)' % self.genindent(self.lindentlevel))
             print('%s}' % self.genindent(self.lindentlevel))
 
     def emitMainFunction(self):
+        print('fn main_wrapper(mut data_ptr: usize, mut data_mem: Vec<u8>) -> (usize, Vec<u8>) {')
+        self.lindentlevel += 1
+        self.translate(0, len(self.allCode))
+        self.lindentlevel -= 1
+        print('%s(data_ptr, data_mem)' % self.genindent(self.lindentlevel))
+        print('}')
+
         print('fn main() {')
 
         self.lindentlevel += 1
-        print('%sunsafe {' % self.genindent(self.lindentlevel))
-        self.lindentlevel += 1
-        print('%s data_ptr = 0;' % self.genindent(self.lindentlevel))
-
-        self.translate(0, len(self.allCode))
-        self.lindentlevel -= 1
+        print('%slet mut data_ptr: usize = 0;' % self.genindent(self.lindentlevel))
+        print('%slet mut data_mem = Vec::new();' % self.genindent(self.lindentlevel))
+        print('%sfor _i in 1..32768 {' % self.genindent(self.lindentlevel))
+        print('%sdata_mem.push(0);' % self.genindent(self.lindentlevel + 1))
         print('%s}' % self.genindent(self.lindentlevel))
+        print('%s(data_ptr, data_mem) = main_wrapper(data_ptr, data_mem);' % self.genindent(self.lindentlevel))
+
         self.lindentlevel -= 1
 
         print('}')
