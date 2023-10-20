@@ -36,6 +36,12 @@ This produces a "BrainfuckProgram.class"-file which can be executed by:
     java BrainfuckProgram
 
 
+Rust
+----
+
+rustc -C opt-level=3 program.rs
+
+
 SPARC
 -----
 In Solaris:
