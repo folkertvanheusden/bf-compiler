@@ -46,7 +46,7 @@ class CompileToMSX(CompileToX86):
 
             n -= cur
 
-    def subFromDataPtr(self, n, dot):
+    def subFromDataPtr(self, n, dot, position):
         ind = self.genindent(1)
 
         while n > 0:
@@ -81,7 +81,7 @@ class CompileToMSX(CompileToX86):
             print('%sADD A,(HL)' % ind) # 7
             print('%sLD (HL),A' % ind) # 7
 
-    def subFromData(self, n, dot):
+    def subFromData(self, n, dot, position):
         ind = self.genindent(1)
 
         print('; sub from data')

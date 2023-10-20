@@ -29,7 +29,7 @@ class CompileToARM(CompileToX86):
         self.addComment('add value to data pointer')
         print('%sadd r0, r0, #%d' % (ind, n))
 
-    def subFromDataPtr(self, n, dot):
+    def subFromDataPtr(self, n, dot, position):
         ind = self.genindent(1)
 
         self.addComment('sub value from data pointer')
@@ -43,7 +43,7 @@ class CompileToARM(CompileToX86):
         print('%sadd r1, r1, #%d' % (ind, n))
         print('%sstrb r1,[r0]' % ind)
 
-    def subFromData(self, n, dot):
+    def subFromData(self, n, dot, position):
         ind = self.genindent(1)
 
         self.addComment('sub from data')

@@ -20,7 +20,7 @@ class CompileToPascal(CompileToAda):
     def addToData(self, n, dot, position):
         print('%sdata_mem[data_ptr] := data_mem[data_ptr] + %d;' % (self.genindent(self.lindentlevel), n))
 
-    def subFromData(self, n, dot):
+    def subFromData(self, n, dot, position):
         print('%sdata_mem[data_ptr] := data_mem[data_ptr] - %d;' % (self.genindent(self.lindentlevel), n))
 
     def emitCharacter(self, n, dot):

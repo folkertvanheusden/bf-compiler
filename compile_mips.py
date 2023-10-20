@@ -43,7 +43,7 @@ class CompileToMIPS(CompileToX86):
 
         print(f'{ind}addiu $s0, $s0, {n}')
 
-    def subFromDataPtr(self, n, dot):
+    def subFromDataPtr(self, n, dot, position):
         ind = self.genindent(1)
 
         self.addComment('sub from pointer')
@@ -59,7 +59,7 @@ class CompileToMIPS(CompileToX86):
         print(f'{ind}add $t0, $t0, {n}')
         print(f'{ind}sb $t0,($s0)')
 
-    def subFromData(self, n, dot):
+    def subFromData(self, n, dot, position):
         ind = self.genindent(1)
 
         self.addComment('sub from data')

@@ -31,7 +31,7 @@ class CompileToGo(CompileBase):
         else:
             print('%sdata_ptr += %d' % (ind, n))
 
-    def subFromDataPtr(self, n, dot):
+    def subFromDataPtr(self, n, dot, position):
         ind = self.genindent(self.lindentlevel)
 
         if n == 1:
@@ -47,7 +47,7 @@ class CompileToGo(CompileBase):
         else:
             print('%sdata_mem[data_ptr] += %d' % (ind, n))
 
-    def subFromData(self, n, dot):
+    def subFromData(self, n, dot, position):
         ind = self.genindent(self.lindentlevel)
 
         if n == 1:

@@ -37,7 +37,7 @@ class CompileToPDP11(CompileToMSX):
 
             n -= cur
 
-    def subFromDataPtr(self, n, dot):
+    def subFromDataPtr(self, n, dot, position):
         ind = self.genindent(1)
 
         while n > 0:
@@ -62,7 +62,7 @@ class CompileToPDP11(CompileToMSX):
             print(f'{ind}ADD #{n:o},R1')
             print(f'{ind}MOVB R1,(R0)')
 
-    def subFromData(self, n, dot):
+    def subFromData(self, n, dot, position):
         ind = self.genindent(1)
 
         print('; sub from data')

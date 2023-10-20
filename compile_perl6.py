@@ -24,7 +24,7 @@ class CompileToPerl6(CompileToPerl):
         else:
             print('%s@data_mem[$data_ptr] += %d;' % (ind, n))
 
-    def subFromData(self, n, dot):
+    def subFromData(self, n, dot, position):
         ind = self.genindent(self.lindentlevel)
 
         if n == 1:

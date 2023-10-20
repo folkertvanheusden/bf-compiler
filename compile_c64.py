@@ -54,7 +54,7 @@ class CompileToC64(CompileToX86):
 
             n -= cur
 
-    def subFromDataPtr(self, n, dot):
+    def subFromDataPtr(self, n, dot, position):
         ind = self.genindent(1)
 
         while n > 0:
@@ -91,7 +91,7 @@ class CompileToC64(CompileToX86):
         print('%sadc #%d' % (ind, n))
         print('%ssta ($fb),y' % ind)
 
-    def subFromData(self, n, dot):
+    def subFromData(self, n, dot, position):
         ind = self.genindent(1)
 
         print('; dec memory pointed to')

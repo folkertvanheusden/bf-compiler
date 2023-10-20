@@ -44,7 +44,7 @@ class CompileToHLASM(CompileToX86):
         print('* add to data ptr')
         self.emitInstr('AHI', 'R7,%d' % n)
 
-    def subFromDataPtr(self, n, dot):
+    def subFromDataPtr(self, n, dot, position):
         ind = self.genindent(1)
 
         print('* sub from data ptr')
@@ -59,7 +59,7 @@ class CompileToHLASM(CompileToX86):
         self.emitInstr('AHI', 'R6,%d' % n)
         self.emitInstr('STC', 'R6,0(R7)')
 
-    def subFromData(self, n, dot):
+    def subFromData(self, n, dot, position):
         ind = self.genindent(1)
 
         print('* sub from data')

@@ -28,7 +28,7 @@ class CompileToRust(CompileBase):
 
         print('%sdata_ptr = data_ptr.wrapping_add(%d);' % (ind, n))
 
-    def subFromDataPtr(self, n, dot):
+    def subFromDataPtr(self, n, dot, position):
         ind = self.genindent(self.lindentlevel)
 
         print('%sdata_ptr = data_ptr.wrapping_sub(%d);' % (ind, n))
@@ -38,7 +38,7 @@ class CompileToRust(CompileBase):
 
         print('%sdata_mem[data_ptr] = data_mem[data_ptr].wrapping_add(%d);' % (ind, n))
 
-    def subFromData(self, n, dot):
+    def subFromData(self, n, dot, position):
         ind = self.genindent(self.lindentlevel)
 
         print('%sdata_mem[data_ptr] = data_mem[data_ptr].wrapping_sub(%d);' % (ind, n))

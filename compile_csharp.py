@@ -26,7 +26,7 @@ class CompileToCSharp(CompileToJava):
 
         print('%sdata_mem[data_ptr] &= 255;' % ind)
 
-    def subFromData(self, n, dot):
+    def subFromData(self, n, dot, position):
         ind = self.genindent(self.lindentlevel)
 
         if n == 1:

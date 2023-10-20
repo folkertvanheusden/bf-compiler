@@ -33,7 +33,7 @@ class CompileToCOBOL(CompileBase):
     def addToDataPtr(self, n, dot, position):
         print('%sADD %d TO DATA-PTR%s' % (self.genindent(self.lindentlevel), n, dot))
 
-    def subFromDataPtr(self, n, dot):
+    def subFromDataPtr(self, n, dot, position):
         print('%sSUBTRACT %d FROM DATA-PTR%s' % (self.genindent(self.lindentlevel), n, dot))
 
     def addToData(self, n, dot, position):
@@ -44,7 +44,7 @@ class CompileToCOBOL(CompileBase):
         print('%sSUBTRACT 256 FROM DATA-MEM(DATA-PTR)' % ind)
         print('%sEND-IF' % ind)
 
-    def subFromData(self, n, dot):
+    def subFromData(self, n, dot, position):
         ind = self.genindent(self.lindentlevel)
 
         print('%sSUBTRACT %d FROM DATA-MEM(DATA-PTR)%s' % (ind, n, dot))

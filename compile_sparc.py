@@ -42,7 +42,7 @@ class CompileToSPARC(CompileToX86):
         self.line()
         print(f'{ind}add\t%g5,{n},%g5')
 
-    def subFromDataPtr(self, n, dot):
+    def subFromDataPtr(self, n, dot, position):
         ind = self.genindent(1)
 
         self.addComment('sub from pointer')
@@ -62,7 +62,7 @@ class CompileToSPARC(CompileToX86):
         self.line()
         print(f'{ind}stb\t%g4,[%g5]')
 
-    def subFromData(self, n, dot):
+    def subFromData(self, n, dot, position):
         ind = self.genindent(1)
 
         self.addComment('sub from data')
