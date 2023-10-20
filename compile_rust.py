@@ -47,7 +47,7 @@ class CompileToRust(CompileBase):
         for i in range(0, n):
             print('%sprint!("{}", char::from(data_mem[data_ptr]));' % self.genindent(self.lindentlevel))
 
-    def startLoop(self, n):
+    def startLoop(self, n, position):
         for j in range(0, n):
             print('%swhile data_mem[data_ptr] > 0 {' % self.genindent(self.lindentlevel))
             self.lindentlevel += 1

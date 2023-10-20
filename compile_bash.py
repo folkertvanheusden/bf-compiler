@@ -46,7 +46,7 @@ class CompileToBash(CompileBase):
         for i in range(0, n):
             print("%sperl -e \"print chr(${data_mem[$data_ptr]});\"" % self.genindent(self.lindentlevel))
 
-    def startLoop(self, n):
+    def startLoop(self, n, position):
         for j in range(0, n):
             print('%swhile [ ${data_mem[$data_ptr]} -gt 0 ] ; do' % self.genindent(self.lindentlevel))
             self.lindentlevel += 1

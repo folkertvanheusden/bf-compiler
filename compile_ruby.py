@@ -52,7 +52,7 @@ class CompileToRuby(CompileBase):
         for i in range(0, n):
             print('%sprint $data_mem[$data_ptr].chr' % ind)
 
-    def startLoop(self, n):
+    def startLoop(self, n, position):
         for j in range(0, n):
             print('%swhile $data_mem[$data_ptr] > 0' % self.genindent(self.lindentlevel))
             self.lindentlevel += 1

@@ -80,7 +80,7 @@ class CompileToHLASM(CompileToX86):
         for i in range(0, n):
             self.emitInstr('SVC', '35')
 
-    def startLoop(self, n):
+    def startLoop(self, n, position):
         for j in range(0, n):
             print('* start loop')
             loopName = 'WLOOP%d' % self.loopNr

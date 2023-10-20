@@ -64,7 +64,7 @@ class CompileToJavascript(CompileToC):
         for i in range(0, n):
             print('%sprocess.stdout.write(String.fromCharCode(data_mem[data_ptr]));' % ind)
 
-    def startLoop(self, n):
+    def startLoop(self, n, position):
         for j in range(0, n):
             print('%swhile(data_mem[data_ptr] > 0) {' % self.genindent(self.lindentlevel))
             self.lindentlevel += 1

@@ -60,7 +60,7 @@ class CompileToScala(CompileToC):
         print('%sval data_mem = new Array[Short](32768)' % ind)
         print('')
 
-    def startLoop(self, n):
+    def startLoop(self, n, position):
         for j in range(0, n):
             print('%swhile(data_mem(data_ptr) > 0) {' % self.genindent(self.lindentlevel))
             self.lindentlevel += 1

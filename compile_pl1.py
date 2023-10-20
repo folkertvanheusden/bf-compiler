@@ -44,7 +44,7 @@ class CompileToPL1(CompileToAda):
             print('%selse' % ind)
             print('%sput edit (c) (A);' % ind2)
 
-    def startLoop(self, n):
+    def startLoop(self, n, position):
         for j in range(0, n):
             print('%sdo while (1 = 1);' % self.genindent(self.lindentlevel))
             self.lindentlevel += 1

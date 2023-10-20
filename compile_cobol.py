@@ -61,7 +61,7 @@ class CompileToCOBOL(CompileBase):
         for i in range(0, n):
             print('%sDISPLAY FUNCTION CHAR(TEMP) WITH NO ADVANCING%s' % (ind, dot))
 
-    def startLoop(self, n):
+    def startLoop(self, n, position):
         for j in range(0, n):
             print('%sPERFORM UNTIL DATA-MEM(DATA-PTR) = 0' % self.genindent(self.lindentlevel))
 

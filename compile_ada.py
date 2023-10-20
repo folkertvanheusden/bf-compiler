@@ -39,7 +39,7 @@ class CompileToAda(CompileBase):
 
         print('%sFlush;' % self.genindent(self.lindentlevel))
 
-    def startLoop(self, n):
+    def startLoop(self, n, position):
         for j in range(0, n):
             loopName = 'wloop_%d' % self.loopNr
             self.loopNr += 1

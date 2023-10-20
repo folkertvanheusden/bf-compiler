@@ -58,7 +58,7 @@ class CompileToARM(CompileToX86):
 
         print('')
 
-    def startLoop(self, n):
+    def startLoop(self, n, position):
         for j in range(0, n):
             self.addComment('start of while loop')
             loopName = 'wloop_%d' % self.loopNr

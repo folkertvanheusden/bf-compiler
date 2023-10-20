@@ -83,7 +83,7 @@ class CompileToSPARC(CompileToX86):
             print(f'{self.genindent(1)}call prtchr')
             print(f'\tnop')
 
-    def startLoop(self, n):
+    def startLoop(self, n, position):
         self.line()
         for j in range(0, n):
             self.addComment('start of while loop')

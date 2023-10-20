@@ -74,7 +74,7 @@ class CompileToMIPS(CompileToX86):
         for i in range(0, n):
             print(f'{self.genindent(1)}jal prtchr')
 
-    def startLoop(self, n):
+    def startLoop(self, n, position):
         for j in range(0, n):
             self.addComment('start of while loop')
             loopName = 'wloop_%d' % self.loopNr
