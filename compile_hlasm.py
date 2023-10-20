@@ -94,7 +94,7 @@ class CompileToHLASM(CompileToX86):
             #self.emitInstr('BZR', 'R15')
             self.emitInstr('BE', '%sE' % loopName)
 
-    def finishLoop(self, n, dot):
+    def finishLoop(self, n, dot, position):
         for j in range(0, n):
             print('* end loop')
             jb_label = self.lnrs.pop(-1) # jump bakc label

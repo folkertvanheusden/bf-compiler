@@ -49,7 +49,7 @@ class CompileToAda(CompileBase):
             print('%swhile data_mem(data_ptr) > 0 loop' % self.genindent(self.lindentlevel))
             self.lindentlevel += 1
 
-    def finishLoop(self, n, dot):
+    def finishLoop(self, n, dot, position):
         for j in range(0, n):
             self.lindentlevel -= 1
 

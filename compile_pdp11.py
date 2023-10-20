@@ -100,7 +100,7 @@ class CompileToPDP11(CompileToMSX):
             print(f'{ind}JMP {loopName}_e')
             print(f'{loopName}_e_not:')
 
-    def finishLoop(self, n, dot):
+    def finishLoop(self, n, dot, position):
         for j in range(0, n):
             print('; end loop')
             jb_label = self.lnrs.pop(-1) # jump bakc label

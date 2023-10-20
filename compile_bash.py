@@ -51,7 +51,7 @@ class CompileToBash(CompileBase):
             print('%swhile [ ${data_mem[$data_ptr]} -gt 0 ] ; do' % self.genindent(self.lindentlevel))
             self.lindentlevel += 1
 
-    def finishLoop(self, n, dot):
+    def finishLoop(self, n, dot, position):
         for j in range(0, n):
             self.lindentlevel -= 1
             print('%sdone' % self.genindent(self.lindentlevel))

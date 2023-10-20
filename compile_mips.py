@@ -91,7 +91,7 @@ class CompileToMIPS(CompileToX86):
 
             self.lindentlevel += 1
 
-    def finishLoop(self, n, dot):
+    def finishLoop(self, n, dot, position):
         for j in range(0, n):
             self.addComment('end of while loop')
             jb_label = self.lnrs.pop(-1) # jump bakc label

@@ -51,7 +51,7 @@ class CompileToPL1(CompileToAda):
             print('%sif data_mem(data_ptr) = 0 then' % self.genindent(self.lindentlevel))
             print('%sleave;' % self.genindent(self.lindentlevel + 1))
 
-    def finishLoop(self, n, dot):
+    def finishLoop(self, n, dot, position):
         for j in range(0, n):
             self.lindentlevel -= 1
             print('%send;' % self.genindent(self.lindentlevel))

@@ -127,7 +127,7 @@ class CompileToC64(CompileToX86):
             print('%sJMP %s_e' % (ind, loopName))
             print('over_%d' % self.hlNr)
 
-    def finishLoop(self, n, dot):
+    def finishLoop(self, n, dot, position):
         for j in range(0, n):
             jb_label = self.lnrs.pop(-1) # jump bakc label
             print('; end of loop')

@@ -34,7 +34,7 @@ class CompileToPascal(CompileToAda):
             print('%sBegin' % ind)
             self.lindentlevel += 1
 
-    def finishLoop(self, n, dot):
+    def finishLoop(self, n, dot, position):
         for j in range(0, n):
             self.lindentlevel -= 1
             print('%sEnd;' % self.genindent(self.lindentlevel))
