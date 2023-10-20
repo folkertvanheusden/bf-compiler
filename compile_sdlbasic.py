@@ -68,10 +68,11 @@ class CompileToSDLBasic(CompileBase):
     def multilineCommentEnd(self):
         print('\'')
 
-    def emitProgramBootstrap(self):
+    def emitProgramBootstrap(self, file):
         print('dim data_mem[32768]')
         print('data_ptr = 0')
         print('')
+        print(f'\' This is a translation of "{file}".')
 
         self.addComments(self.copyrightNotice)
         print('')

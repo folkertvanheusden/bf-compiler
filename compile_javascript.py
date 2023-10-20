@@ -74,7 +74,8 @@ class CompileToJavascript(CompileToC):
             self.lindentlevel -= 1
             print('%s}' % self.genindent(self.lindentlevel))
 
-    def emitProgramBootstrap(self):
+    def emitProgramBootstrap(self, file):
+        print(f'// This is a translation of "{file}".')
         for i in self.copyrightNotice:
             print('// %s' % i)
         print('')

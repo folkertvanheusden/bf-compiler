@@ -84,10 +84,11 @@ class CompileToPerl(CompileBase):
     def multilineCommentEnd(self):
         print('#')
 
-    def emitProgramBootstrap(self):
+    def emitProgramBootstrap(self, file):
         for i in self.copyrightNotice:
             print('# %s' % i)
         print('')
+        print(f'# This is a translation of "{file}".')
 
         print('use strict;')
         print('use warnings;')

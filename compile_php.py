@@ -80,12 +80,13 @@ class CompileToPHP(CompileBase):
     def multilineCommentEnd(self):
         print('#')
 
-    def emitProgramBootstrap(self):
+    def emitProgramBootstrap(self, file):
         print('<?')
 
         for i in self.copyrightNotice:
             print('# %s' % i)
         print('')
+        print(f'# This is a translation of "{file}".')
 
         print('$memory_size = 32768;')
         print('$data_mem = array_fill(0, $memory_size, 0);')

@@ -82,7 +82,8 @@ class CompileToLisp(CompileBase):
     def multilineCommentEnd(self):
         print('|#')
 
-    def emitProgramBootstrap(self):
+    def emitProgramBootstrap(self, file):
+        print(f'; This is a translation of "{file}".')
         print('(defvar *data_mem* (make-array \'(32768))')
         print('(defvar *data_ptr*)')
         print('')

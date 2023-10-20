@@ -21,9 +21,10 @@ class CompileToArduino(CompileToC):
         for i in range(0, n):
             print('%sSerial.print((char)data_mem[data_ptr]);' % self.genindent(self.lindentlevel))
 
-    def emitProgramBootstrap(self):
+    def emitProgramBootstrap(self, file):
         print('#include <stdint.h>')
         print('')
+        print(f'// This is a translation of "{file}".')
 
         print('uint8_t data_mem[1536];')
         print('uint16_t data_ptr = 0;')

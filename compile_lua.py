@@ -68,8 +68,9 @@ class CompileToLua(CompileBase):
     def multilineCommentEnd(self):
         print('--')
 
-    def emitProgramBootstrap(self):
+    def emitProgramBootstrap(self, file):
         self.addComments(self.copyrightNotice)
+        print(f'-- This is a translation of "{file}".')
         print('')
         print('data_ptr = 1')
         print('')

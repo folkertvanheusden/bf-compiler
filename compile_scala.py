@@ -46,10 +46,11 @@ class CompileToScala(CompileToC):
         for i in range(0, n):
             print('%sprint(data_mem(data_ptr).toChar)' % ind)
 
-    def emitProgramBootstrap(self):
+    def emitProgramBootstrap(self, file):
         for i in self.copyrightNotice:
             print('// %s' % i)
         print('')
+        print(f'// This is a translation of "{file}".')
 
         print('object BrainfuckProgram {')
         self.lindentlevel += 1

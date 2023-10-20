@@ -135,7 +135,8 @@ class CompileToHLASM(CompileToX86):
         print('data_mem DS    32000C')
         print('         END BEGIN')
 
-    def emitProgramBootstrap(self):
+    def emitProgramBootstrap(self, file):
+        print(f'* This is a translation of "{file}".')
         print('R0 EQU 0')
         print('R1 EQU 1')
         print('R2 EQU 2')

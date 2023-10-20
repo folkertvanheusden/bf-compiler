@@ -82,11 +82,12 @@ class CompileToC(CompileBase):
     def multilineCommentEnd(self):
         print(' */')
 
-    def emitProgramBootstrap(self):
+    def emitProgramBootstrap(self, file):
         print('#include <stdint.h>')
         print('#include <stdio.h>')
         print('#include <stdlib.h>')
         print('')
+        print(f'/* This is a translation of "{file}". */')
         print('uint8_t *data_mem = NULL;')
         print('int data_ptr = 0;')
         print('')

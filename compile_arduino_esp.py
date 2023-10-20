@@ -22,9 +22,10 @@ class CompileToArduinoESP(CompileToArduino):
         for i in range(0, n):
             print('%sSerial.print((char)data_mem[data_ptr]);' % ind)
 
-    def emitProgramBootstrap(self):
+    def emitProgramBootstrap(self, file):
         print('#include <stdint.h>')
         print('')
+        print(f'// This is a translation of "{file}".')
 
         print('uint8_t data_mem[32768];')
         print('uint16_t data_ptr = 0;')

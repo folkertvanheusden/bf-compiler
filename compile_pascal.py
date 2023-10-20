@@ -39,9 +39,10 @@ class CompileToPascal(CompileToAda):
             self.lindentlevel -= 1
             print('%sEnd;' % self.genindent(self.lindentlevel))
 
-    def emitProgramBootstrap(self):
+    def emitProgramBootstrap(self, file):
         print('Program My_Brainfuck_application;')
         print('Uses Crt;')
+        print(f'(* This is a translation of "{file}" *)')
         print('')
 
         for i in self.copyrightNotice:

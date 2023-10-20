@@ -44,7 +44,8 @@ class CompileToJava(CompileToC):
 
         print('%sSystem.out.flush();' % ind)
 
-    def emitProgramBootstrap(self):
+    def emitProgramBootstrap(self, file):
+        print(f'// This is a translation of "{file}".')
         for i in self.copyrightNotice:
             print('// %s' % i)
         print('')

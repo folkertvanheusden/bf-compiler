@@ -132,7 +132,7 @@ class CompileBase:
         if not first:
             self.multilineCommentEnd()
 
-    def emitProgramBootstrap(self):
+    def emitProgramBootstrap(self, file):
         pass
 
     def emitProgramTail(self):

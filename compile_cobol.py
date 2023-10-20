@@ -85,7 +85,7 @@ class CompileToCOBOL(CompileBase):
     def multilineCommentEnd(self):
         print('%s*' % (' ' * 6))
 
-    def emitProgramBootstrap(self):
+    def emitProgramBootstrap(self, file):
         print('       IDENTIFICATION DIVISION.')
         print('       PROGRAM-ID. BRAINFUCK.')
         print('       AUTHOR. %s' % getpass.getuser())
@@ -93,6 +93,7 @@ class CompileToCOBOL(CompileBase):
         print('      * by Folkert van Heusden - mail@vanheusden.com')
         print('      * www.vanheusden.com')
         print('      * Released in the public domain license.')
+        print(f'      * This is a translation of "{file}".')
         tm = time.localtime()
         print('       DATE-WRITTEN. %02d/%02d/%02d.' % (tm.tm_year % 100, tm.tm_mon, tm.tm_mday))
         print('       ')

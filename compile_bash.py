@@ -68,9 +68,10 @@ class CompileToBash(CompileBase):
     def multilineCommentEnd(self):
         print('#')
 
-    def emitProgramBootstrap(self):
+    def emitProgramBootstrap(self, file):
         print('#! /bin/bash')
         print('')
+        print(f'# This is a translation of "{file}".')
         print('data_ptr=1')
         print('')
         print('memory_size=32768')

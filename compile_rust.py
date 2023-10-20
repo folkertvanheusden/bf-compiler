@@ -69,10 +69,11 @@ class CompileToRust(CompileBase):
     def multilineCommentEnd(self):
         print('*/')
 
-    def emitProgramBootstrap(self):
+    def emitProgramBootstrap(self, file):
         for i in self.copyrightNotice:
             print('// %s' % i)
         print('')
+        print(f'// This is a translation of "{file}".')
 
         print('static mut data_ptr: usize = 0;')
         print('static mut data_mem: [u8; 32768] = [0; 32768];')

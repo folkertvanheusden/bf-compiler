@@ -56,10 +56,11 @@ class CompileToPL1(CompileToAda):
             self.lindentlevel -= 1
             print('%send;' % self.genindent(self.lindentlevel))
 
-    def emitProgramBootstrap(self):
+    def emitProgramBootstrap(self, file):
         for i in self.copyrightNotice:
             print('/* %s */' % i)
         print('')
+        print(f'/* This is a translation of "{file}". */')
 
     def emitFunctions(self):
         for blkLoop in range(0, len(self.blocks)):

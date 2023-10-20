@@ -67,9 +67,10 @@ class CompileToAda(CompileBase):
     def multilineCommentEnd(self):
         print('--')
 
-    def emitProgramBootstrap(self):
+    def emitProgramBootstrap(self, file):
         print('with Ada.Text_IO; use Ada.Text_IO;')
         print('')
+        print(f'-- This is a translation of "{file}".')
 
         for i in self.copyrightNotice:
             print('-- %s' % i)

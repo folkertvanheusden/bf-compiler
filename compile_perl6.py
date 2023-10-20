@@ -41,10 +41,11 @@ class CompileToPerl6(CompileToPerl):
             print('%swhile @data_mem[$data_ptr] {' % self.genindent(self.lindentlevel))
             self.lindentlevel += 1
 
-    def emitProgramBootstrap(self):
+    def emitProgramBootstrap(self, file):
         for i in self.copyrightNotice:
             print('# %s' % i)
         print('')
+        print(f'# This is a translation of "{file}".')
 
         print('my int32 $data_ptr = 0;')
         print('my uint8 @data_mem;');
