@@ -100,7 +100,7 @@ class CompileToRust(CompileBase):
 
         self.lindentlevel += 1
         print('%slet mut data_ptr: usize = 0;' % self.genindent(self.lindentlevel))
-        print('%slet mut data_mem = Vec::new();' % self.genindent(self.lindentlevel))
+        print('%slet mut data_mem = Vec::with_capacity(32768);' % self.genindent(self.lindentlevel))
         print('%sfor _i in 1..32768 {' % self.genindent(self.lindentlevel))
         print('%sdata_mem.push(0);' % self.genindent(self.lindentlevel + 1))
         print('%s}' % self.genindent(self.lindentlevel))
