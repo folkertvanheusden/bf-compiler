@@ -16,7 +16,7 @@ class CompileToScala(CompileToC):
     def get_name():
         return ('scala', None)
 
-    def addToDataPtr(self, n, dot):
+    def addToDataPtr(self, n, dot, position):
         ind = self.genindent(self.lindentlevel)
 
         print('%sdata_ptr += %d.toShort;' % (ind, n))
@@ -26,7 +26,7 @@ class CompileToScala(CompileToC):
 
         print('%sdata_ptr -= %d.toShort;' % (ind, n))
 
-    def addToData(self, n, dot):
+    def addToData(self, n, dot, position):
         ind = self.genindent(self.lindentlevel)
 
         print('%sdata_mem(data_ptr) = (data_mem(data_ptr) + %d).toShort;' % (ind, n))

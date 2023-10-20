@@ -34,7 +34,7 @@ class CompileToSPARC(CompileToX86):
         print('%scall\tf%d' % (self.genindent(1), funcNr))
         print('%snop' % self.genindent(1))
 
-    def addToDataPtr(self, n, dot):
+    def addToDataPtr(self, n, dot, position):
         ind = self.genindent(1)
 
         self.addComment('add to pointer')
@@ -50,7 +50,7 @@ class CompileToSPARC(CompileToX86):
         self.line()
         print(f'{ind}sub\t%g5,{n},%g5')
 
-    def addToData(self, n, dot):
+    def addToData(self, n, dot, position):
         ind = self.genindent(1)
 
         self.addComment('add to data')

@@ -23,7 +23,7 @@ class CompileToGo(CompileBase):
     def invokeFunction(self, funcNr):
         print('%sf%d()' % (self.genindent(self.lindentlevel), funcNr))
 
-    def addToDataPtr(self, n, dot):
+    def addToDataPtr(self, n, dot, position):
         ind = self.genindent(self.lindentlevel)
 
         if n == 1:
@@ -39,7 +39,7 @@ class CompileToGo(CompileBase):
         else:
             print('%sdata_ptr -= %d' % (ind, n))
 
-    def addToData(self, n, dot):
+    def addToData(self, n, dot, position):
         ind = self.genindent(self.lindentlevel)
 
         if n == 1:

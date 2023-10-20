@@ -16,7 +16,7 @@ class CompileToJava(CompileToC):
     def get_name():
         return ('java', None)
 
-    def addToData(self, n, dot):
+    def addToData(self, n, dot, position):
         ind = self.genindent(self.lindentlevel)
 
         if n == 1:

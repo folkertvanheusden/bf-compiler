@@ -22,7 +22,7 @@ class CompileToRuby(CompileBase):
     def invokeFunction(self, funcNr):
         print('%sf%d()' % (self.genindent(self.lindentlevel), funcNr))
 
-    def addToDataPtr(self, n, dot):
+    def addToDataPtr(self, n, dot, position):
         ind = self.genindent(self.lindentlevel)
 
         print('%s$data_ptr += %d' % (ind, n))
@@ -32,7 +32,7 @@ class CompileToRuby(CompileBase):
 
         print('%s$data_ptr -= %d' % (ind, n))
 
-    def addToData(self, n, dot):
+    def addToData(self, n, dot, position):
         ind = self.genindent(self.lindentlevel)
 
         print('%s$data_mem[$data_ptr] += %d' % (ind, n))

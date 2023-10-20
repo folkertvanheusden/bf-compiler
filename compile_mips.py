@@ -36,7 +36,7 @@ class CompileToMIPS(CompileToX86):
         print(f'{ind}lw ${reg},($sp)  # pop register {reg} from stack')
         print(f'{ind}addi $sp,$sp,4')
 
-    def addToDataPtr(self, n, dot):
+    def addToDataPtr(self, n, dot, position):
         ind = self.genindent(1)
 
         self.addComment('add to pointer')
@@ -50,7 +50,7 @@ class CompileToMIPS(CompileToX86):
 
         print(f'{ind}subu $s0, $s0, {n}')
 
-    def addToData(self, n, dot):
+    def addToData(self, n, dot, position):
         ind = self.genindent(1)
 
         self.addComment('add to data')

@@ -21,13 +21,13 @@ class CompileToAda(CompileBase):
     def invokeFunction(self, funcNr):
         print('%sf%d;' % (self.genindent(self.lindentlevel), funcNr))
 
-    def addToDataPtr(self, n, dot):
+    def addToDataPtr(self, n, dot, position):
         print('%sdata_ptr := data_ptr + %d;' % (self.genindent(self.lindentlevel), n))
 
     def subFromDataPtr(self, n, dot):
         print('%sdata_ptr := data_ptr - %d;' % (self.genindent(self.lindentlevel), n))
 
-    def addToData(self, n, dot):
+    def addToData(self, n, dot, position):
         print('%sdata_mem(data_ptr) := data_mem(data_ptr) + %d;' % (self.genindent(self.lindentlevel), n))
 
     def subFromData(self, n, dot):

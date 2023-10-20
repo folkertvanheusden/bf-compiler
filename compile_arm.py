@@ -23,7 +23,7 @@ class CompileToARM(CompileToX86):
         self.addComment('invoke function')
         print('%sbl f%d' % (self.genindent(1), funcNr))
 
-    def addToDataPtr(self, n, dot):
+    def addToDataPtr(self, n, dot, position):
         ind = self.genindent(1)
 
         self.addComment('add value to data pointer')
@@ -35,7 +35,7 @@ class CompileToARM(CompileToX86):
         self.addComment('sub value from data pointer')
         print('%ssub r0, r0, #%d' % (ind, n))
 
-    def addToData(self, n, dot):
+    def addToData(self, n, dot, position):
         ind = self.genindent(1)
 
         self.addComment('add to data')

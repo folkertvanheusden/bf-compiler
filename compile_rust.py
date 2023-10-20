@@ -23,7 +23,7 @@ class CompileToRust(CompileBase):
     def invokeFunction(self, funcNr):
         print('%sf%d();' % (self.genindent(self.lindentlevel), funcNr))
 
-    def addToDataPtr(self, n, dot):
+    def addToDataPtr(self, n, dot, position):
         ind = self.genindent(self.lindentlevel)
 
         print('%sdata_ptr = data_ptr.wrapping_add(%d);' % (ind, n))
@@ -33,7 +33,7 @@ class CompileToRust(CompileBase):
 
         print('%sdata_ptr = data_ptr.wrapping_sub(%d);' % (ind, n))
 
-    def addToData(self, n, dot):
+    def addToData(self, n, dot, position):
         ind = self.genindent(self.lindentlevel)
 
         print('%sdata_mem[data_ptr] = data_mem[data_ptr].wrapping_add(%d);' % (ind, n))

@@ -37,7 +37,7 @@ class CompileToHLASM(CompileToX86):
         self.emitInstr('LA', 'R15,f%d' % funcNr)
         self.emitInstr('BALR', 'R14,R15') # branch and link register
 
-    def addToDataPtr(self, n, dot):
+    def addToDataPtr(self, n, dot, position):
         ind = self.genindent(1)
 
         # load address, LA = 12 bit max, LAY = 20 bit max
@@ -51,7 +51,7 @@ class CompileToHLASM(CompileToX86):
         self.emitInstr('L', "R6,=F'%d'" % n)
         self.emitInstr('SR', 'R7,R6') # FIXME SR werkt niet zoals verwacht
 
-    def addToData(self, n, dot):
+    def addToData(self, n, dot, position):
         ind = self.genindent(1)
 
         print('* add to data')

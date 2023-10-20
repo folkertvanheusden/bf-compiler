@@ -16,7 +16,7 @@ class CompileToPerl6(CompileToPerl):
     def get_name():
         return ('perl6', None)
 
-    def addToData(self, n, dot):
+    def addToData(self, n, dot, position):
         ind = self.genindent(self.lindentlevel)
 
         if n == 1:

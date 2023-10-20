@@ -25,7 +25,7 @@ class CompileToMSX(CompileToX86):
     def invokeFunction(self, funcNr):
         print('%sCALL f%d' % (self.genindent(1), funcNr))
 
-    def addToDataPtr(self, n, dot):
+    def addToDataPtr(self, n, dot, position):
         ind = self.genindent(1)
 
         while n > 0:
@@ -68,7 +68,7 @@ class CompileToMSX(CompileToX86):
 
             n -= cur
 
-    def addToData(self, n, dot):
+    def addToData(self, n, dot, position):
         ind = self.genindent(1)
 
         print('; add to data')
