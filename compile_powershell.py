@@ -82,7 +82,7 @@ class CompileToPowerShell(CompileBase):
         print(f'# This is a translation of "{file}".')
         print('')
 
-        print('$data_mem = [int[]]::new(32768);')
+        print('$data_mem = [int[]]::new(65536);')
         print('$data_ptr = 0;')
         print('')
 
@@ -97,7 +97,7 @@ class CompileToPowerShell(CompileBase):
 
             self.lindentlevel -= 1
 
-            print('')
+            print('}')
 
     def emitMainFunction(self):
         self.lindentlevel += 1
