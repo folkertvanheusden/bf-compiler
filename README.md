@@ -51,4 +51,4 @@ In Solaris:
     ./myprogram
 
 
-(C) 2016-2023 by folkert@vanheusden.com
+(C) 2016-2024 by folkert@vanheusden.com
