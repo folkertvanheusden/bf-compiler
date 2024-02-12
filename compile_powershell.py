@@ -25,36 +25,36 @@ class CompileToPowerShell(CompileBase):
     def addToDataPtr(self, n, dot, position):
         ind = self.genindent(self.lindentlevel)
 
-        print('%s$data_ptr += %d;' % (ind, n))
+        print('%s$global:data_ptr += %d;' % (ind, n))
 
     def subFromDataPtr(self, n, dot, position):
         ind = self.genindent(self.lindentlevel)
 
-        print('%s$data_ptr -= %d;' % (ind, n))
+        print('%s$global:data_ptr -= %d;' % (ind, n))
 
     def addToData(self, n, dot, position):
         ind = self.genindent(self.lindentlevel)
 
-        print('%s$data_mem[$data_ptr] += %d;' % (ind, n))
+        print('%s$global:data_mem[$global:data_ptr] += %d;' % (ind, n))
 
-        print('%s$data_mem[$data_ptr] = $data_mem[$data_ptr] -band 255;' % ind)
+        print('%s$global:data_mem[$global:data_ptr] = $global:data_mem[$global:data_ptr] -band 255;' % ind)
 
     def subFromData(self, n, dot, position):
         ind = self.genindent(self.lindentlevel)
 
-        print('%s$data_mem[$data_ptr] -= %d;' % (ind, n))
+        print('%s$global:data_mem[$global:data_ptr] -= %d;' % (ind, n))
 
-        print('%s$data_mem[$data_ptr] = $data_mem[$data_ptr] -band 255;' % ind)
+        print('%s$global:data_mem[$global:data_ptr] = $global:data_mem[$global:data_ptr] -band 255;' % ind)
 
     def emitCharacter(self, n, dot):
         ind = self.genindent(self.lindentlevel)
 
         for i in range(0, n):
-            print('%sWrite-Host ([char]::ConvertFromUtf32($data_mem[$data_ptr])) -NoNewLine;' % ind)
+            print('%sWrite-Host ([char]::ConvertFromUtf32($global:data_mem[$global:data_ptr])) -NoNewLine;' % ind)
 
     def startLoop(self, n, position):
         for j in range(0, n):
-            print('%swhile($data_mem[$data_ptr] -gt 0) {' % self.genindent(self.lindentlevel))
+            print('%swhile($global:data_mem[$global:data_ptr] -gt 0) {' % self.genindent(self.lindentlevel))
 
             self.lindentlevel += 1
 
@@ -82,8 +82,8 @@ class CompileToPowerShell(CompileBase):
         print(f'# This is a translation of "{file}".')
         print('')
 
-        print('$data_mem = [int[]]::new(65536);')
-        print('$data_ptr = 0;')
+        print('$global:data_mem = [int[]]::new(65536);')
+        print('$global:data_ptr = 0;')
         print('')
 
     def emitFunctions(self):
