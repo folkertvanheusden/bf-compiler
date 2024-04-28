@@ -36,6 +36,13 @@ This produces a "BrainfuckProgram.class"-file which can be executed by:
     java BrainfuckProgram
 
 
+PDP11
+-----
+    pdpy11 myprogram.asm -o myprogram.raw
+
+Pdpy11 (the assembler) can be obtained from https://github.com/pdpy11/pdpy11
+
+
 Rust
 ----
 

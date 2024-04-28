@@ -19,6 +19,9 @@ class CompileToPDP11(CompileToMSX):
     def get_name():
         return ('pdp-11', '"bare bones" assembly for the PDP-11 with at least 64kB RAM')
 
+    def emitProgramBootstrap(self, file):
+        pass
+
     def genindent(self, level):
         return ' ' * (level * 4)
 
