@@ -36,6 +36,13 @@ This produces a "BrainfuckProgram.class"-file which can be executed by:
     java BrainfuckProgram
 
 
+PDP11
+-----
+    pdpy11 myprogram.asm -o myprogram.raw
+
+Pdpy11 (the assembler) can be obtained from https://github.com/pdpy11/pdpy11
+
+
 Rust
 ----
 
@@ -51,4 +58,4 @@ In Solaris:
     ./myprogram
 
 
-(C) 2016-2023 by folkert@vanheusden.com
+(C) 2016-2024 by folkert@vanheusden.com

@@ -29,6 +29,7 @@ from compile_perl6 import CompileToPerl6
 from compile_php import CompileToPHP
 from compile_pl1 import CompileToPL1
 from compile_power import CompileToPower
+from compile_powershell import CompileToPowerShell
 from compile_python import CompileToPython
 from compile_ruby import CompileToRuby
 from compile_rust import CompileToRust
@@ -64,6 +65,7 @@ targets[CompileToPerl.get_name()[0]] = (CompileToPerl(), CompileToPerl.get_name(
 targets[CompileToPHP.get_name()[0]] = (CompileToPHP(), CompileToPHP.get_name()[1])
 targets[CompileToPL1.get_name()[0]] = (CompileToPL1(), CompileToPL1.get_name()[1])
 targets[CompileToPower.get_name()[0]] = (CompileToPower(), CompileToPower.get_name()[1])
+targets[CompileToPowerShell.get_name()[0]] = (CompileToPowerShell(), CompileToPowerShell.get_name()[1])
 targets[CompileToPython.get_name()[0]] = (CompileToPython(), CompileToPython.get_name()[1])
 targets[CompileToRuby.get_name()[0]] = (CompileToRuby(), CompileToRuby.get_name()[1])
 targets[CompileToRust.get_name()[0]] = (CompileToRust(), CompileToRust.get_name()[1])
