@@ -36,6 +36,7 @@ from compile_scala import CompileToScala
 from compile_sdlbasic import CompileToSDLBasic
 from compile_sparc import CompileToSPARC
 from compile_x86 import CompileToX86
+from compile_8086 import CompileTo8086
 
 targets = dict()
 
@@ -70,6 +71,7 @@ targets[CompileToScala.get_name()[0]] = (CompileToScala(), CompileToScala.get_na
 targets[CompileToSDLBasic.get_name()[0]] = (CompileToSDLBasic(), CompileToSDLBasic.get_name()[1])
 targets[CompileToSPARC.get_name()[0]] = (CompileToSPARC(), CompileToSPARC.get_name()[1])
 targets[CompileToX86.get_name()[0]] = (CompileToX86(), CompileToX86.get_name()[1])
+targets[CompileTo8086.get_name()[0]] = (CompileTo8086(), CompileTo8086.get_name()[1])
 
 if len(sys.argv) != 3:
     print('Usage: %s target file-in.bf > file-out.ext' % sys.argv[0])
