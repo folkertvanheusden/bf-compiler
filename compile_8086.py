@@ -61,9 +61,7 @@ class CompileTo8086(CompileBase):
         if n == 1:
             print('%sinc byte ds:[bx]' % ind)
         else:
-            print('%smov al, byte ds:[bx]' % (ind,))
-            print('%sadd al,%d' % (ind, n))
-            print('%smov byte ds:[bx],al' % (ind,))
+            print('%sadd byte ds:[bx],%d' % (ind, n))
 
     def subFromData(self, n, dot, position):
         ind = self.genindent(1)
@@ -75,9 +73,7 @@ class CompileTo8086(CompileBase):
         if n == 1:
             print('%sdec byte ds:[bx]' % ind)
         else:
-            print('%smov al, byte ds:[bx]' % (ind,))
-            print('%ssub al,%d' % (ind, n))
-            print('%smov byte ds:[bx],al' % (ind,))
+            print('%ssub byte ds:[bx],%d' % (ind, n))
 
     def emitCharacter(self, n, dot):
         self.addComment('emit character(s)')
@@ -136,7 +132,6 @@ class CompileTo8086(CompileBase):
         self.lindentlevel -= 1
 
     def emitProgramTail(self):
-        print('times ( ( ($-$$ + 0xFFFF) & ~0xFFFF ) - ($-$$) ) db 0x90')
         print('')
         print('SEGMENT _DATA')
         print('data_mem resb 32000')
@@ -157,7 +152,6 @@ class CompileTo8086(CompileBase):
         print('SEGMENT _TEXT')
         print('GLOBAL start')
         print('start:')
-        print('%scli' % ind)
         print('%smov ax,seg stack_end' % ind)
         print('%smov ss,ax' % ind)
         print('%smov sp,stack_end' % ind)
