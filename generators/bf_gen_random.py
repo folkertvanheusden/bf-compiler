@@ -66,11 +66,12 @@ def run(program, max_run_time, target):
             memory[memory_pointer] &= 255
         elif instruction == '>':
             memory_pointer += 1
-            memory_pointer %= memory_len
+            if memory_pointer >= memory_len:
+                break
         elif instruction == '<':
             memory_pointer -= 1
             if memory_pointer < 0:
-                memory_pointer += memory_len
+                break
         elif instruction == '[':
             stack.append(pc)
             if len(stack) > memory_len:
