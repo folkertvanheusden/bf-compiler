@@ -76,14 +76,6 @@ def run(program, max_run_time, target, stack_limit):
 
     return output
 
-def dumb(target):
-    out = ''
-    for c in target:
-        a = ord(c)
-        out += '>'  # "allocate" memory cell
-        out += '+' * a
-        out += '.'
-    return out
 
 best_ratio = 10000000000000000000000000
 best = None
@@ -106,13 +98,7 @@ n_instr = len(instructions)
 while True:
     n_restarts += 1
 
-    program = dumb(target)
-    if best is None:
-        output = run(program, 0.5, target, 255)
-        r = fitness(target, output, program)
-        best = output
-        best_ratio = r
-        print(best_ratio, program, best)
+    program = ''
 
     history = set()
     for i in range(10000):
