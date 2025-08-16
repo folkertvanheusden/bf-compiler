@@ -29,8 +29,6 @@ def try_produce(target):
 
         elif instruction == '.':
             instruction_count = min(instruction_count, target_len - dot_count)
-            if instruction_count == 0:
-                continue
             dot_count += instruction_count
 
         result += instruction * instruction_count
