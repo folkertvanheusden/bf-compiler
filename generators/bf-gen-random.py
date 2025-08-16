@@ -53,7 +53,7 @@ def run(program, max_run_time, target):
 
     stack = []
 
-    while pc < program_len and output != target and time.time() - start < max_run_time:
+    while pc < program_len and output != target and time.time() - start < max_run_time and len(output) < len(target):
         instruction = program[pc]
         new_pc = pc + 1
 
