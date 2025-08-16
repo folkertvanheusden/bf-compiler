@@ -1,5 +1,6 @@
 #! /usr/bin/python3
 
+import multiprocessing as mp
 import jellyfish
 import random
 import sys
@@ -60,6 +61,15 @@ def run(program, max_run_time, target, stack_limit):
 
     return output
 
+def checker(q_in, q_out):
+    while True:
+        program = q_in.get()
+        try:
+            output = run(program, 0.5, target, 255)
+            q_out.put((program, output))
+        except Exception as e:
+            print(f'Exception: {e}')
+            q_out.put((None, None))
 
 best_ratio = None
 best = None
@@ -73,6 +83,14 @@ n = 0
 pn = 0
 max_t_per_s_i = 0  # transactions per second
 n_restarts = 0
+
+q_in = mp.Queue()
+q_out = mp.Queue()
+procs = []
+for proc in range(32):
+    p = mp.Process(target=checker, args=(q_out, q_in))
+    p.start()
+    procs.append(p)
 
 instructions = ('[', ']', '.', '>', '<', '+', '-')
 n_instr = len(instructions)
@@ -98,18 +116,19 @@ while True:
         program += instructions[i] * sizes[i]
 
     history = set()
-    while len(history) < 10000:
-        n += 1
-        output = run(program, 0.5, target, 255)
-        if output == target:
-            print(f'Found {target}: {program}')
-            sys.exit(0)
-        program = ''.join(random.sample(program, len(program)))
-        if output == None:
-            continue
+    for i in range(10000):
+        q_out.put(program)
         if program in history:
             break
         history.add(program)
+        program = ''.join(random.sample(program, len(program)))
+
+    for i in range(len(history)):
+        program, output = q_in.get()
+        if program == None or output == None:
+            continue
+
+        n += 1
 
         r = jellyfish.jaro_similarity(target, output)
         if best_ratio is None or r > best_ratio:
