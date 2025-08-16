@@ -9,6 +9,7 @@ from compile_ada import CompileToAda
 from compile_arduino import CompileToArduino
 from compile_arduino_esp import CompileToArduinoESP
 from compile_arm import CompileToARM
+from compile_arm64 import CompileToARM64
 from compile_avr328 import CompileToAVR328
 from compile_bash import CompileToBash
 from compile_cobol import CompileToCOBOL
@@ -46,6 +47,7 @@ targets[CompileToAda.get_name()[0]] = (CompileToAda(), CompileToAda.get_name()[1
 targets[CompileToArduinoESP.get_name()[0]] = (CompileToArduinoESP(), CompileToArduinoESP.get_name()[1])
 targets[CompileToArduino.get_name()[0]] = (CompileToArduino(), CompileToArduino.get_name()[1])
 targets[CompileToARM.get_name()[0]] = (CompileToARM(), CompileToARM.get_name()[1])
+targets[CompileToARM64.get_name()[0]] = (CompileToARM64(), CompileToARM64.get_name()[1])
 targets[CompileToAVR328.get_name()[0]] = (CompileToAVR328(), CompileToAVR328.get_name()[1])
 targets[CompileToBash.get_name()[0]] = (CompileToBash(), CompileToBash.get_name()[1])
 targets[CompileToC64.get_name()[0]] = (CompileToC64(), CompileToC64.get_name()[1])
