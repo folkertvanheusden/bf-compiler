@@ -11,11 +11,12 @@ def try_produce(target):
     target_len = len(target)
     dot_count = 0
     loop_counter = 0
+    instructions = ('>', '<', '+', '-', '.', '[', ']')
 
     result = ''
 
     while dot_count < target_len:
-        instruction = random.choice(('>', '<', '+', '-', '.', '[', ']'))
+        instruction = random.choice(instructions)
         instruction_count = random.randint(1, 255)
 
         if instruction == ']':
