@@ -308,7 +308,7 @@ class CompileBase:
         print('', file=sys.stderr)
 
     def main(self, file):
-        print('(C) 2016-2024 by Folkert van Heusden <mail@vanheusden.com>', file=sys.stderr)
+        print('(C) 2016-2025 by Folkert van Heusden <mail@vanheusden.com>', file=sys.stderr)
         print('Released in the public domain', file=sys.stderr)
         print('', file=sys.stderr)
         print('This program reads the brainfuck source-code from stdin.', file=sys.stderr)

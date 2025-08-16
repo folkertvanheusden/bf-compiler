@@ -17,6 +17,11 @@ to see a list of target languages.
 compiling the result
 --------------------
 
+AVR328
+------
+    avra myprogram.asm
+
+
 ARM / X86
 ---------
     as --64 -g --gstabs+ -o myprogram.o myprogram.asm && ld -o myprogram myprogram.o
@@ -58,4 +63,4 @@ In Solaris:
     ./myprogram
 
 
-(C) 2016-2024 by folkert@vanheusden.com
+(C) 2016-2025 by folkert@vanheusden.com
