@@ -1,5 +1,6 @@
 #! /usr/bin/python3
 
+#from line_profiler import profile
 import random
 import sys
 import time
@@ -7,6 +8,7 @@ import time
 
 target = sys.argv[1]
 
+#@profile
 def try_produce(target):
     target_len = len(target)
     dot_count = 0
@@ -36,6 +38,7 @@ def try_produce(target):
     return result
 
 
+#@profile
 def run(program, max_run_time, target, stack_limit):
     end_time = time.time() + max_run_time
 
@@ -102,12 +105,19 @@ n = 0
 pn = 0
 max_t_per_s_i = 0  # transactions per second
 
+max_sane_program_length = 0
+for c in target:
+    # > + .
+    #   ^ times the ascii value
+    max_sane_program_length += ord(c) + 2
+
 while True:
     program = try_produce(target)
-    verify = run(program, 0.5, target, 255)
-    if verify:
-        print(f'Found {target}: {program}')
-        break
+    if len(program) < max_sane_program_length:
+        verify = run(program, 0.5, target, 255)
+        if verify:
+            print(f'Found {target}: {program}')
+            break
 
     n += 1
 
