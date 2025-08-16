@@ -39,7 +39,7 @@ def try_produce(target):
 
 
 def run(program, max_run_time, target):
-    start = time.time()
+    end_time = time.time() + max_run_time
 
     program_len = len(program)
     pc = 0
@@ -52,14 +52,14 @@ def run(program, max_run_time, target):
 
     stack = []
 
-    while pc < program_len and len(output) < len(target) and time.time() - start < max_run_time:
+    while pc < program_len and time.time() < end_time:
         instruction = program[pc]
         new_pc = pc + 1
 
         if instruction == '.':
             new_c = chr(memory[memory_pointer])
             output += new_c
-            if output != target[0:len(output)]:
+            if len(output) > len(target) or output != target[0:len(output)]:
                 return False
         elif instruction == '+':
             memory[memory_pointer] += 1
