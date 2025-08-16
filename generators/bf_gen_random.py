@@ -101,6 +101,7 @@ print('Go!')
 start = time.time()
 pts = start
 n = 0
+max_t_per_s = 0  # transactions per second
 
 while True:
     program = try_produce(target)
@@ -114,5 +115,8 @@ while True:
     now = time.time()
     t_diff = now - start;
     if now - pts >= 1.0:
-        print(f'Tried {n} in {t_diff:.2f} seconds or {n / t_diff:.2f} per second')
+        t_per_s = n / t_diff
+        if t_per_s > max_t_per_s:
+            max_t_per_s = t_per_s
+        print(f'Tried {n} in {t_diff:.2f} seconds or {t_per_s:.2f} per second (max: {max_t_per_s:.2f})')
         pts = now
