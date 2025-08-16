@@ -36,7 +36,7 @@ def try_produce(target):
     return result
 
 
-def run(program, max_run_time, target):
+def run(program, max_run_time, target, stack_limit):
     end_time = time.time() + max_run_time
 
     program_len = len(program)
@@ -88,7 +88,7 @@ def run(program, max_run_time, target):
     return output == target
 
 
-if run('>++++++++[<+++++++++>-]<.>+++++[<+++++>-]<.+++++++++++..+++.>++++++[<----------->-]<-.------------.>++++++[<+++++++++++>-]<++.+++++.+++++++++++.>+++++++[<------------>-]<.>++++++++[<+++++++++>-]<+.++++++++++.>+++++++++[<--------->-]<--.>+++++++[<++++++++++>-]<-..+++++++++.>+++++++[<----------->-]<-.>+++++++[<++++++++++++>-]<.---------------.++++++++++++++.+.>+++++++[<---------->-]<.', 1.0, 'Hallo, dit is een test.') == True:
+if run('>++++++++[<+++++++++>-]<.>+++++[<+++++>-]<.+++++++++++..+++.>++++++[<----------->-]<-.------------.>++++++[<+++++++++++>-]<++.+++++.+++++++++++.>+++++++[<------------>-]<.>++++++++[<+++++++++>-]<+.++++++++++.>+++++++++[<--------->-]<--.>+++++++[<++++++++++>-]<-..+++++++++.>+++++++[<----------->-]<-.>+++++++[<++++++++++++>-]<.---------------.++++++++++++++.+.>+++++++[<---------->-]<.', 1.0, 'Hallo, dit is een test.', 255) == True:
     print('Self test succeeded')
 else:
     print('Self test FAILED')
@@ -104,7 +104,7 @@ max_t_per_s_i = 0  # transactions per second
 
 while True:
     program = try_produce(target)
-    verify = run(program, 0.5, target)
+    verify = run(program, 0.5, target, 255)
     if verify:
         print(f'Found {target}: {program}')
         break
