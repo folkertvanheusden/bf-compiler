@@ -16,7 +16,7 @@ def try_produce(target):
 
     while dot_count < target_len:
         instruction = random.choice(('>', '<', '+', '-', '.', '[', ']'))
-        instruction_count = random.randint(0, 255)
+        instruction_count = random.randint(1, 255)
 
         if instruction == ']':
             instruction_count = min(instruction_count, loop_counter)
@@ -33,8 +33,7 @@ def try_produce(target):
                 continue
             dot_count += instruction_count
 
-        for i in range(0, instruction_count):
-            result += instruction
+        result += instruction * instruction_count
 
     return result
 
