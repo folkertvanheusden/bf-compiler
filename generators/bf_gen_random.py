@@ -75,7 +75,7 @@ def run(program, max_run_time, target, stack_limit):
                 break
         elif instruction == '[':
             stack.append(pc)
-            if len(stack) > memory_len:
+            if len(stack) > stack_limit:
                 return False
         elif instruction == ']':
             if len(stack) == 0:
