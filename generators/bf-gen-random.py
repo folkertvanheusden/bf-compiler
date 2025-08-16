@@ -91,10 +91,21 @@ assert run('>++++++++[<+++++++++>-]<.>+++++[<+++++>-]<.+++++++++++..+++.>++++++[
 
 print('Go!')
 
+start = time.time()
+pts = start
+n = 0
+
 while True:
     program = try_produce(target)
     verify = run(program, 0.5, target)
-
     if verify:
         print(f'Found {target}: {program}')
         break
+
+    n += 1
+
+    now = time.time()
+    t_diff = now - start;
+    if now - pts >= 1.0:
+        print(f'Tried {n} in {t_diff:.2f} seconds or {n / t_diff:.2f} per second')
+        pts = now
