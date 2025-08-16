@@ -1,6 +1,5 @@
 #! /usr/bin/python3
 
-#from line_profiler import profile
 import random
 import sys
 import time
@@ -8,7 +7,6 @@ import time
 
 target = sys.argv[1]
 
-#@profile
 def try_produce(target):
     target_len = len(target)
     dot_count = 0
@@ -38,7 +36,6 @@ def try_produce(target):
     return result
 
 
-#@profile
 def run(program, max_run_time, target, stack_limit):
     end_time = time.time() + max_run_time
 
