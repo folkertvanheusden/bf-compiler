@@ -15,14 +15,16 @@ class CompileToARM64(CompileToX86):
         print('Brainfuck to ARM64 ASM compiler.', file=sys.stderr)
 
     def get_name():
-        return ('arm64', 'ARM64 assembly, Raspberry PI target')
+        return ('arm64', 'ARM64 assembly, Raspberry Pi target')
 
     def genindent(self, level):
         return ' ' * (level * 4)
 
     def invokeFunction(self, funcNr):
         self.addComment('invoke function')
+        print(f'{self.ind}str lr, [sp,#-16]!')  # push
         print('%sbl f%d' % (self.ind, funcNr))
+        print(f'{self.ind}ldr lr, [sp], #16')  # pop
 
     def emitDebug(self, ind, position):
         print('%s.loc 1 %d %d' % (ind, position[0], position[1]))
@@ -53,7 +55,9 @@ class CompileToARM64(CompileToX86):
     def emitCharacter(self, n, dot):
         self.addComment('emit character(s)')
         for i in range(0, n):
+            print(f'{self.ind}str lr, [sp,#-16]!')  # push
             print('%sbl prtchr' % self.ind)
+            print(f'{self.ind}ldr lr, [sp], #16')  # pop
 
         print('')
 
@@ -101,13 +105,11 @@ class CompileToARM64(CompileToX86):
             print(f'{self.ind}.type   f{blkLoop}, %function')
             print(f'{self.ind}.global   f{blkLoop}')
             print('f%d:' % blkLoop)
-            print(f'{self.ind}str lr, [sp,#-16]!')  # push
             print(f'{self.ind}str x0, [sp,#-16]!')  # push
 
             self.translate(self.blocks[blkLoop][0], self.blocks[blkLoop][1])
 
             print(f'{self.ind}ldr x0, [sp], #16')  # pop
-            print(f'{self.ind}ldr lr, [sp], #16')  # pop
             print('%sret' % self.ind)
             print('.ltorg')
 
