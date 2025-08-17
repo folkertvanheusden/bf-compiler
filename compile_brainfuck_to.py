@@ -22,6 +22,7 @@ from compile_java import CompileToJava
 from compile_javascript import CompileToJavascript
 from compile_lisp import CompileToLisp
 from compile_lua import CompileToLua
+from compile_mc68000 import CompileToMC68000
 from compile_mips import CompileToMIPS
 from compile_msx import CompileToMSX
 from compile_pascal import CompileToPascal
@@ -60,6 +61,7 @@ targets[CompileToJava.get_name()[0]] = (CompileToJava(), CompileToJava.get_name(
 targets[CompileToJavascript.get_name()[0]] = (CompileToJavascript(), CompileToJavascript.get_name()[1])
 targets[CompileToLisp.get_name()[0]] = (CompileToLisp(), CompileToLisp.get_name()[1])
 targets[CompileToLua.get_name()[0]] = (CompileToLua(), CompileToLua.get_name()[1])
+targets[CompileToMC68000.get_name()[0]] = (CompileToMC68000(), CompileToMC68000.get_name()[1])
 targets[CompileToMIPS.get_name()[0]] = (CompileToMIPS(), CompileToMIPS.get_name()[1])
 targets[CompileToMSX.get_name()[0]] = (CompileToMSX(), CompileToMSX.get_name()[1])
 targets[CompileToPascal.get_name()[0]] = (CompileToPascal(), CompileToPascal.get_name()[1])
