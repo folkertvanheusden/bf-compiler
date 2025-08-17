@@ -120,6 +120,9 @@ class CompileToMC68000(CompileToX86):
         self.translate(0, len(self.allCode))
 
         print('')
+        print(f'{self.ind}move.w #1,-(sp)')  # CONIN (GEMDOS opcode 1) -- wait for a key
+        print(f'{self.ind}trap #1')
+        print(f'{self.ind}addq.l #2,sp')
         print(f'{self.ind}clr.w -(sp)')  # quit (GEMDOS opcode 0)
         print(f'{self.ind}trap #1')
 
