@@ -105,11 +105,9 @@ class CompileToARM64(CompileToX86):
             print(f'{self.ind}.type   f{blkLoop}, %function')
             print(f'{self.ind}.global   f{blkLoop}')
             print('f%d:' % blkLoop)
-            print(f'{self.ind}str x0, [sp,#-16]!')  # push
 
             self.translate(self.blocks[blkLoop][0], self.blocks[blkLoop][1])
 
-            print(f'{self.ind}ldr x0, [sp], #16')  # pop
             print('%sret' % self.ind)
             print('.ltorg')
 
