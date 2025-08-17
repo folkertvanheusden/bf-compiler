@@ -1,0 +1,131 @@
+#! /usr/bin/python3
+
+import random
+import sys
+import time
+
+
+target = sys.argv[1]
+
+def try_produce(target):
+    target_len = len(target)
+    dot_count = 0
+    loop_counter = 0
+    instructions = ('>', '<', '+', '-', '.', '[', ']')
+
+    result = ''
+
+    while dot_count < target_len:
+        instruction = random.choice(instructions)
+        instruction_count = random.randint(1, 255)
+
+        if instruction == ']':
+            instruction_count = min(instruction_count, loop_counter)
+            if instruction_count == 0:
+                continue
+            loop_counter -= instruction_count
+
+        elif instruction == '[':
+            loop_counter += instruction_count
+
+        elif instruction == '.':
+            instruction_count = min(instruction_count, target_len - dot_count)
+            dot_count += instruction_count
+
+        result += instruction * instruction_count
+
+    return result
+
+
+def run(program, max_run_time, target, stack_limit):
+    end_time = time.time() + max_run_time
+
+    program_len = len(program)
+    pc = 0
+
+    memory_len = 32000
+    memory = [ 0 ] * memory_len
+    memory_pointer = 0
+
+    output = ''
+
+    stack = []
+
+    while pc < program_len and time.time() < end_time:
+        instruction = program[pc]
+        new_pc = pc + 1
+
+        if instruction == '.':
+            new_c = chr(memory[memory_pointer])
+            output += new_c
+            if len(output) > len(target) or output != target[0:len(output)]:
+                return False
+        elif instruction == '+':
+            memory[memory_pointer] += 1
+            memory[memory_pointer] &= 255
+        elif instruction == '-':
+            memory[memory_pointer] -= 1
+            memory[memory_pointer] &= 255
+        elif instruction == '>':
+            memory_pointer += 1
+            if memory_pointer >= memory_len:
+                break
+        elif instruction == '<':
+            memory_pointer -= 1
+            if memory_pointer < 0:
+                break
+        elif instruction == '[':
+            stack.append(pc)
+            if len(stack) > stack_limit:
+                return False
+        elif instruction == ']':
+            if len(stack) == 0:
+                return False
+            if memory[memory_pointer] > 0:
+                new_pc = stack.pop()
+
+        pc = new_pc
+
+    return output == target
+
+
+if run('>++++++++[<+++++++++>-]<.>+++++[<+++++>-]<.+++++++++++..+++.>++++++[<----------->-]<-.------------.>++++++[<+++++++++++>-]<++.+++++.+++++++++++.>+++++++[<------------>-]<.>++++++++[<+++++++++>-]<+.++++++++++.>+++++++++[<--------->-]<--.>+++++++[<++++++++++>-]<-..+++++++++.>+++++++[<----------->-]<-.>+++++++[<++++++++++++>-]<.---------------.++++++++++++++.+.>+++++++[<---------->-]<.', 1.0, 'Hallo, dit is een test.', 255) == True:
+    print('Self test succeeded')
+else:
+    print('Self test FAILED')
+    sys.exit(1)
+
+print('Go!')
+
+start = time.time()
+pts = start
+n = 0
+pn = 0
+max_t_per_s_i = 0  # transactions per second
+
+max_sane_program_length = 0
+for c in target:
+    # > + .
+    #   ^ times the ascii value
+    max_sane_program_length += ord(c) + 2
+
+while True:
+    program = try_produce(target)
+    if len(program) < max_sane_program_length:
+        verify = run(program, 0.5, target, 255)
+        if verify:
+            print(f'Found {target}: {program}')
+            break
+
+    n += 1
+
+    now = time.time()
+    t_diff = now - start;
+    if now - pts >= 1.0:
+        t_per_s = n / t_diff
+        t_per_s_i = (n - pn) / (now - pts)
+        pn = n
+        if t_per_s_i > max_t_per_s_i:
+            max_t_per_s_i = t_per_s_i
+        print(f'Tried {n} in {t_diff:.2f} seconds or {t_per_s:.2f} per second globally, {t_per_s_i:.2f} in the 1s interval (max: {max_t_per_s_i:.2f})')
+        pts = now
