@@ -26,24 +26,30 @@ class CompileToMC68000(CompileToX86):
 
     def addToDataPtr(self, n, dot, position):
         self.addComment('add value to data pointer')
-        print('%smove.l #%d,A2' % (self.ind, n))
-        print('%sadd.l a2,a0' % (self.ind, ))
+        if n >= 1 and n <= 8:
+            print('%saddq.l #%d,a0' % (self.ind, n))
+        else:
+            print('%sadd.l #%d,a0' % (self.ind, n))
 
     def subFromDataPtr(self, n, dot, position):
         self.addComment('sub value from data pointer')
-        print('%ssub.l #%d,a0' % (self.ind, n))
+        if n >= 1 and n <= 8:
+            print('%ssubq.l #%d,a0' % (self.ind, n))
+        else:
+            print('%ssub.l #%d,a0' % (self.ind, n))
 
     def addToData(self, n, dot, position):
         self.addComment('add to data')
-        print(f'{self.ind}move.b (a0),d0')
-        print(f'{self.ind}add.b #%d,d0' % n)
-        print(f'{self.ind}move.b d0,(a0)')
+        if n >= 1 and n <= 8:
+            print('%saddq.b #%d,(a0)' % (self.ind, n))
+        else:
+            print('%sadd.b #%d,(a0)' % (self.ind, n))
 
     def subFromData(self, n, dot, position):
-        self.addComment('sub from data')
-        print(f'{self.ind}move.b (a0),d0')
-        print(f'{self.ind}sub.b #%d,d0' % n)
-        print(f'{self.ind}move.b d0,(a0)')
+        if n >= 1 and n <= 8:
+            print('%ssubq.b #%d,(a0)' % (self.ind, n))
+        else:
+            print('%ssub.b #%d,(a0)' % (self.ind, n))
 
     def emitCharacter(self, n, dot):
         self.addComment('emit character(s)')
@@ -61,8 +67,7 @@ class CompileToMC68000(CompileToX86):
 
             print('%s:' % (loopName,))
             print('%smove.b (a0),d0' % self.ind)
-            print('%smove.b #0,d1' % self.ind)
-            print('%scmp.b d0,d1' % self.ind)
+            print('%scmp.b #0,d1' % self.ind)
             print('%sbeq %s_e' % (self.ind, loopName))
             self.lindentlevel += 1
 
@@ -104,7 +109,7 @@ class CompileToMC68000(CompileToX86):
 
     def emitProgramTail(self):
         print('.bss')
-        print('data_mem: ds.b 32000' % self.ind)
+        print('data_mem: ds.b 32000')
 
     def emitMainFunction(self):
         self.addComments(self.copyrightNotice)
