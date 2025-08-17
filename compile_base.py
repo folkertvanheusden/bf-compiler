@@ -43,15 +43,15 @@ class CompileBase:
         with open(file, 'r') as fh:
             temp = fh.read()
 
-            line = 0
-            col = 0
+            line = 1
+            col = 1
 
             self.allCode = []
 
             for c in temp:
                 if c == '\n':
                     line += 1
-                    col = 0
+                    col = 1
 
                 else:
                     self.allCode.append((c, line, col))
