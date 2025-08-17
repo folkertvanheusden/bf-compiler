@@ -67,7 +67,7 @@ class CompileToMC68000(CompileToX86):
 
             print('%s:' % (loopName,))
             print('%smove.b (a0),d0' % self.ind)
-            print('%scmp.b #0,d1' % self.ind)
+            print('%scmp.b #0,d0' % self.ind)
             print('%sbeq %s_e' % (self.ind, loopName))
             self.lindentlevel += 1
 
@@ -127,15 +127,14 @@ class CompileToMC68000(CompileToX86):
         print(f'{self.ind}trap #1')
 
         print('prtchr:')
-        print(f'{self.ind}move.l d0,-(sp)')
         print(f'{self.ind}move.l a0,-(sp)')
-        print(f'{self.ind}and.b #255,d0')
+        print(f'{self.ind}move.b (a0),d0')
+        print(f'{self.ind}and.w #255,d0')
         print(f'{self.ind}move.w d0,-(sp)')
         print(f'{self.ind}move.w #2,-(sp)')  # CONOUT
         print(f'{self.ind}trap #1')
         print(f'{self.ind}addq.l #4,sp')
         print(f'{self.ind}move.l (sp)+,a0')
-        print(f'{self.ind}move.l (sp)+,d0')
         print('%srts' % self.ind)
 
         print('init:')
