@@ -90,7 +90,7 @@ class CompileToCOBOL(CompileBase):
         print('       PROGRAM-ID. BRAINFUCK.')
         print('       AUTHOR. %s' % getpass.getuser())
         print('      * Brainfuck code compiled to COBOL using compiler written')
-        print('      * by Folkert van Heusden - mail@vanheusden.com')
+        print('      * by Folkert van Heusden - folkert@vanheusden.com')
         print('      * www.vanheusden.com')
         print('      * Released in the public domain license.')
         print(f'      * This is a translation of "{file}".')
