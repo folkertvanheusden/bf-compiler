@@ -128,12 +128,24 @@ class CompileToMC68000(CompileToX86):
 
         print('prtchr:')
         print(f'{self.ind}move.l a0,-(sp)')
+
+        # add CR when LF detected
+        print(f'{self.ind}cmp.b #10,(a0)')
+        print(f'{self.ind}bne cont_prtchr')
+        print(f'{self.ind}move.w #13,-(sp)')
+        print(f'{self.ind}move.w #2,-(sp)')  # CONOUT
+        print(f'{self.ind}trap #1')
+        print(f'{self.ind}addq.l #4,sp')
+        print(f'{self.ind}move.l (sp),a0')
+
+        print('cont_prtchr:')
         print(f'{self.ind}move.b (a0),d0')
         print(f'{self.ind}and.w #255,d0')
         print(f'{self.ind}move.w d0,-(sp)')
         print(f'{self.ind}move.w #2,-(sp)')  # CONOUT
         print(f'{self.ind}trap #1')
         print(f'{self.ind}addq.l #4,sp')
+
         print(f'{self.ind}move.l (sp)+,a0')
         print('%srts' % self.ind)
 
